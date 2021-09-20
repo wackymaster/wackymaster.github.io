@@ -4,15 +4,16 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Hello there.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+I have been programming since fourth grade (though mostly dabbling in Khan Academy art and doodles), and started to take it seriously in ninth grade. The majority of my computer science background is self-taught and through personal projects.
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+Currently, I am a sophomore at Cornell University, where I study computer science and physics.
 
+I have competed in the American Computer Science League, where I have been invited to the All-Star contest several times and have been the highest scorer in my region (which includes several states).
 
-[jekyll-organization]: https://github.com/jekyll
+I built this website recently as a way to showcase some of my projects (many of my older programs I have lost the code for).
+
+Enjoy!
+- William Wang
+
