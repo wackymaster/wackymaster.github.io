@@ -69,7 +69,7 @@
 }
 
 .showcase:hover .thumbnail {
-  right: 325px;
+  right: 350px;
   left: -25px;
 }
 .showcase:hover .thumbnail__overlay {
