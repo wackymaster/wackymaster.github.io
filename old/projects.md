@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: My Projects
 permalink: /Projects/
 order: 1
