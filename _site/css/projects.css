@@ -27,7 +27,7 @@
 }
 
 .thumbnail--awesome {
-  background-image: "test.png";
+  background-image: "{{site.baseurl}}/images/paper.jpg";
 }
 
 .thumbnail__overlay {
