@@ -1,0 +1,96 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+* {
+  box-sizing: border-box;
+  font-family: "Open Sans";
+}
+
+.showcase {
+  position: relative;
+  width: 100%;
+  height: 20em;
+  margin: 1em auto;
+  overflow: hidden;
+  background: transparent;
+}
+
+.thumbnail {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 300px;
+  z-index: 1;
+  background: #9DBF9E;
+  background-position: 50% 50%;
+  background-size: cover;
+  transition: right 250ms ease, left 250ms ease;
+}
+
+.thumbnail--awesome {
+  background-image: "test.png";
+}
+
+.thumbnail__overlay {
+  position: relative;
+  padding-top: 8em;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.desc {
+  position: absolute;
+  width: 300px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  padding: 20px;
+  z-index: 2;
+  background: white;
+  text-align: center;
+  transition: background 250ms ease, color 250ms, width 250ms ease, padding 250ms ease;
+}
+.desc:after {
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  margin-top: -10px;
+  border-style: solid;
+  border-width: 10px;
+  border-color: transparent #fff transparent transparent;
+  content: "";
+  transition: border-color 250ms;
+}
+
+.showcase:hover .thumbnail {
+  right: 325px;
+  left: -25px;
+}
+.showcase:hover .thumbnail__overlay {
+  opacity: 1;
+}
+.showcase:hover .desc {
+  width: 350px;
+  padding-left: 45px;
+  padding-right: 45px;
+}
+.showcase:hover .desc:after {
+  border-color: transparent #202426 transparent transparent;
+}
+
+.btn {
+  padding: 1em 2em;
+  border: 0.15em solid #fff;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background 250ms;
+}
+.btn:hover {
+  box-shadow: inset 0 0 0 5px #ffffff;
+}
