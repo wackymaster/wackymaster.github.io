@@ -27,7 +27,7 @@
 }
 
 .thumbnail--awesome {
-  background-image: url("images/paper.jpg");
+  background-image: url("paper.jpg");
 }
 
 .thumbnail__overlay {
@@ -73,7 +73,6 @@
 }
 .showcase:hover .thumbnail {
   width: 80%;
-  right: 100%;
   left: -25px;
 }
 .showcase:hover .thumbnail__overlay {
