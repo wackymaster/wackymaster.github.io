@@ -1,0 +1,100 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+* {
+  box-sizing: border-box;
+  font-family: "Open Sans";
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.intro{
+  width: 70%;
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.intro h1{
+  color:rgb(42, 42, 42);
+  text-align: left;
+  font-size: 60px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 200;
+}
+
+.intro h2{
+  color:rgb(42, 42, 42);
+  text-align: left;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color:rgba(0, 0, 0, 0.3);
+}
+
+
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.logo {
+  float:left;
+  padding: -5px -5px;
+}
+
+.topnav a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: black;
+  transition: background 500ms;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+
+
+.project-item {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-img {
+  flex: 1;
+  padding-left: 10%;
+}
+
+.project-description {
+  flex: 1;
+}
+
+.project-description h2 {
+  font-size: 2rem;
+  margin: 1rem 0;
+  color:rgb(42, 42, 42);
+}
+
+.project-description p {
+  font-size: 1rem;
+}
+
+.project-link {
+  display: inline-block;
+  margin: 2rem 0;
+  font-size: 1rem;
+}
+

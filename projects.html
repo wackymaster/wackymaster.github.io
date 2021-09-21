@@ -1,0 +1,114 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Projects</title>
+  <link rel="stylesheet" href="projects.css">
+  <script src="main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="topnav">
+        <div class="logo">
+          <a href="index.html">
+            <img src="images/logo.png" />
+          </a>
+        </div>
+        <a href="about.html">About Me</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="intro">
+
+    <h1>My Projects</h1>
+    <h2>Here's a brief showcase of some of the projects I have worked on.
+      Unfortunately, I have lost the code for some of my older programs
+      (younger me wasn't aware of version control). Aside, hope you enjoy!</h2>
+
+  </div>
+
+  <div class="showcase">
+    <div class="thumbnail first-project">
+    </div>
+    <div class="desc">
+      <h2>Steer Calendar</h2>
+      <p> This was an app I built during the spring break in tenth grade.
+        Steer Calendar is an iOS app written in Swift. A student registers
+        their classes using Google Firebase, which are then saved using SQLite.
+        The app fetches information from the calendars of the saved classes, parses
+        the iCal data, and then displays assignments and other course content on
+        students’ devices.
+      </p>
+      <p>
+        *Note: due to the expensive cost of an Apple Developer account and
+        my graduation of high school, I am no longer hosting this on the app store
+      </p>
+    </div>
+  </div>
+  <div class="showcase">
+    <div class="thumbnail snake">
+    </div>
+    <div class="desc">
+      <h2>Snake AI Gamebot </h2>
+      <p>As the final project for my end-of-year physics class, I decided to
+        play around with using AI to play games. The first game I did was
+        SNAKE, where the training data was based on my own playing. The data
+        contained information such as its direction, the distance to the wall,
+        and the vector from the head to the red dot. I then trained the model
+        against this data.
+      </p>
+    </div>
+  </div>
+
+  <div class="showcase">
+    <div class="thumbnail camel">
+    </div>
+    <div class="desc">
+      <h2>"The Clarkanoid"</h2>
+      <p>
+        You are a University professor, yet suddenly you have turned into a camel.
+        Your friend, the owl, has been taken by the Imperials, which the all-powerful
+        "Ark" controls. Recover the owl by going on an adventure through six
+        terrains, collecting valuable items, defeating a dragon in space, and
+        finally meeting the Ark.
+      </p>
+      <p> This game was made with two partners over the course of 2 months. The
+        entire game is coded in OCaml (though it uses an SDL library for graphics).
+        The game takes advantage of both functional and imperative features of OCaml.
+        The Clarkanoid implements its own Entity-Component-System and features
+        entirely custom pixel art, unique AI's for each enemy, and custom soundtracks,
+        animations, and storylines.
+      </p>
+    </div>
+  </div>
+
+  <div class="showcase">
+    <div class="thumbnail path">
+    </div>
+    <div class="desc">
+      <h2>Traveling Salesman Problem</h2>
+      <p>
+        As one of my high school projects, I decided to look into the traveling
+        salesman problem. Written in Java and using Swing, I made a program to help
+        visualize the path finding. The user places specific points on the GUI,
+        and then chooses the algorithm to find the shortest cycle to the starting
+        position.
+      </p>
+      <p> The algorithms feature brute force, a greedy algorithm, a greedy algorithm
+        with swapping, and an ant-colony heuristic, in which
+        several "ants" travel along the paths and leave "pheremones". The paths
+        with the most pheremones tends to suggest the quickest path.
+      </p>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

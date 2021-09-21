@@ -1,0 +1,106 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Research</title>
+  <link rel="stylesheet" href="research.css">
+  <script src="main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="topnav">
+        <div class="logo">
+          <a href="index.html">
+            <img src="images/logo.png" />
+          </a>
+        </div>
+        <a href="about.html">About Me</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="intro">
+
+    <h1>My Research</h1>
+    <h2>I can't show too much about my research since most of it should be
+      kept private. I have included some brief summaries for those curious.
+    </h2>
+
+  </div>
+
+  <div class="project-item">
+    <div class="project-img">
+      <img src="images/paper.jpg" />
+    </div>
+    <div class="project-description">
+      <h2>Laboratory for Laser Energetics</h2>
+      <p>
+        I developed a 3D viewfactor code to simulate capsule uniformity during
+        indirect-drive implosions. The program was written in FORTRAN
+        (and using OpenMP for multiprocessing). I used the code to compare
+        hohlraum geometries as well as test the possibilities of new target chamber
+        designs.
+      </p>
+      <p>
+        I also developed a novel hohlraum design (PEPR) for the OMEGA 60-beam laser.
+        This design would provide great uniformity and promise insight towards
+        spherical hohlraum performance. I published my first, first-author paper
+        on the PEPR hohlraum (Journal: Physics of Plasmas)
+      </p>
+      <a href="https://doi.org/10.1063/5.0050214" class="project-link" target="_blank" rel="noopener noreferrer"> View
+        Paper </a>
+    </div>
+  </div>
+
+  <div class="project-item">
+    <div class="project-description has-margin-right">
+      <h2>Itai Cohen Laboratory (Cornell University)</h2>
+      <p>
+        Articular cartilage demonstrates unique mechanical properties, one being
+        its reponses to shear stress. The top layer of cartilage is up to 10-100
+        times more compliant than the deeper layers.
+      </p>
+      <p>
+        I created a Python code to model the cartilage as a network consisting of
+        nodes and bonds. The code stresses the network and then uses a conjugate
+        gradient algorithm to the find minimal energy state of the networks.
+        The code is written in a modular-fashion and generalized enough in that
+        it can be applied to both 2-D and 3-D lattices.
+      </p>
+      <figcaption>*The animation shown only uses around 10^2 nodes,
+        though the code can easily handle beyond 10^4.
+      </figcaption>
+    </div>
+    <div class="project-img">
+      <img src="images/cart1.gif" />
+    </div>
+  </div>
+
+  <div class="project-item">
+    <div class="project-img">
+      <img src="images/qtclock.png" />
+    </div>
+    <div class="project-description">
+      <h2>Clinical Cardiovascular Research Center</h2>
+      <p>
+        Around middle-high school, I developed several softwares at CCRC of
+        University of Rochester. The first being QTClock (shown on the left).
+      </p>
+      <p>
+        QTClock obtained data from ECG recordings and plotted both the QT
+        interval along with a color gradient corresponding to the patient’s
+        intake drug concentration in a clock-like graph.
+        I also developed an online calculator that assesses the absolute risk of
+        life-threatening cardiac events in patients with long QT syndrome.
+      </p>
+    </div>
+  </div>
+
+</body>
+
+</html>
