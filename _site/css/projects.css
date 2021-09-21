@@ -27,7 +27,7 @@
 }
 
 .thumbnail--awesome {
-  background-image: url("{{site.baseurl}}/images/paper.jpg");
+  background-image: url("images/paper.jpg");
 }
 
 .thumbnail__overlay {
