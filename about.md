@@ -8,8 +8,6 @@ classes: wide
 
 Hello there,
 
-Thanks for checking out my website!
-
 I have been programming since fourth grade (though mostly dabbling in Khan Academy art and doodles), and started to take it seriously in ninth grade. The majority (~90%) of my computer science background is self-taught and through personal projects.
 
 I built this website recently as a way to showcase some of my projects (many of my older programs I have lost the code for).
