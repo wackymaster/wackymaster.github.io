@@ -69,10 +69,10 @@
 }
 .showcase:hover {
   width:100%;
-  height:50%;
+  height:60%;
 }
 .showcase:hover .thumbnail {
-  width: 70%;
+  width: 80%;
   right: 100%;
   left: -25px;
 }
