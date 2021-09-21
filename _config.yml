@@ -26,6 +26,12 @@ theme: minima
 plugins:
   - jekyll-feed
 
+sass:
+  style: :compressed
+  # Where you keep your scss files
+  sass_dir: assets/css/
+  # Where sass should look for other scss
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
