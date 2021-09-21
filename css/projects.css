@@ -69,20 +69,20 @@
 }
 
 .showcase:hover .thumbnail {
-  right: 325px;
+  right: 400px;
   left: -25px;
 }
 .showcase:hover .thumbnail__overlay {
   opacity: 1;
 }
 .showcase:hover .desc {
-  width: 350px;
+  width: 300px;
   padding-left: 45px;
   padding-right: 45px;
 }
-.showcase:hover .desc:after {
+/* .showcase:hover .desc:after {
   border-color: transparent #202426 transparent transparent;
-}
+} */
 
 .btn {
   padding: 1em 2em;
