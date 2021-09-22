@@ -118,6 +118,10 @@ body {
   background-image: url("images/pathfinder.png");
 }
 
+.path:hover {
+  background-image: url("images/pathfinder.gif");
+}
+
 .thumbnail__overlay {
   position: relative;
   padding-top: 8em;
