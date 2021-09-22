@@ -34,9 +34,9 @@ body {
 }
 
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: rgba(255, 255, 255, 0.5);
   color: black;
-  transition: background 350ms;
+  transition: background 750ms;
 }
 
 .topnav a.active {

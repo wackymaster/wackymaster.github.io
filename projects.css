@@ -16,10 +16,11 @@ body {
 }
 
 .intro{
-  width: 100%;
+  width: 80%;
   max-width: 90rem;
   margin: 0 auto;
   padding: 0 1.5rem;
+  padding-top: 3rem;
   text-align: center;
 }
 
@@ -171,11 +172,6 @@ body {
 }
 .showcase:hover .thumbnail__overlay {
   opacity: 1;
-}
-.showcase:hover .desc {
-  width: 40%;
-  padding-left: 10%;
-  padding-right: 10%;
 }
 .showcase:hover .desc:after {
   border-color: transparent #202426 transparent transparent;
