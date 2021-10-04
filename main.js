@@ -15,9 +15,11 @@ function textSequence(num) {
     while (i == num) {
       i = getRandomInt(example.length);
     }
-    $('#sequence').fadeOut(1000, function () {
-      document.getElementById("sequence").innerHTML = "Code with " + example[i];
-      $('#sequence').fadeIn(500);
+    $('#sequence').animate({ fontSize: '.1em' }, function () {
+      $('#sequence').animate({ fontSize: '.1em' }, "fast");
+
+      document.getElementById("sequence").innerHTML = example[i];
+      $('#sequence').animate({ fontSize: '1em' }, "slow");
     });
 
     textSequence(i);
