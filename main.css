@@ -108,6 +108,7 @@ body {
   margin: auto;
   color: white;
   display: inline;
+  text-size-adjust: none;
 }
 
 #sequence {

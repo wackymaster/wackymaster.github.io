@@ -1,6 +1,6 @@
 
-var example = ['JAVA', 'OCAML', 'PYTHON', 'FORTRAN', 'C++', 'LaTeX',
-  'C', 'Javascript', 'RISC-V', 'ASSEMBLY', 'MATLAB'];
+var example = ['Java', 'OCaml', 'Python', 'FORTRAN', 'C++', 'LaTeX',
+  'C', 'Javascript', 'RISC-V', 'Assembly', 'MATLAB'];
 var duration = 3;
 
 function getRandomInt(max) {
