@@ -16,7 +16,6 @@ function textSequence(num) {
       i = getRandomInt(example.length);
     }
     $('#sequence').animate({ fontSize: '.1em' }, function () {
-      $('#sequence').animate({ fontSize: '.1em' }, "fast");
 
       document.getElementById("sequence").innerHTML = example[i];
       $('#sequence').animate({ fontSize: '1em' }, "slow");
