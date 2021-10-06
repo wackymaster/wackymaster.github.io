@@ -55,7 +55,6 @@ body {
   color: white;
   text-align: center;
   font-size: min(5vw, 100px);
-
 }
 
 @keyframes blink {
@@ -71,7 +70,7 @@ body {
 }
 
 #codewith {
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.3rem;
   font-family: Arial, Helvetica, sans-serif;
   width: 50ch;
   margin: auto;
@@ -79,11 +78,10 @@ body {
   display: inline;
   text-size-adjust: none;
   font-size: min(2.5vw, 30px);
-
 }
 
 #sequence {
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.3rem;
   font-family: Arial, Helvetica, sans-serif;
   width: 50ch;
   margin: auto;
