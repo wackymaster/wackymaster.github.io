@@ -11,9 +11,8 @@ body {
 
 .intro{
   width: 70%;
-  max-width: 90rem;
+  max-width: 70%;
   margin: 0 auto;
-  padding: 0 1.5rem;
   padding-top: 3rem;
   text-align: center;
 }
@@ -21,7 +20,7 @@ body {
 .intro h1{
   color:rgb(42, 42, 42);
   text-align: left;
-  font-size: 60px;
+  font-size: 50px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 200;
 }
@@ -33,41 +32,6 @@ body {
   font-weight: 100;
 }
 
-.topnav {
-  overflow: hidden;
-  background-color:rgba(0, 0, 0, 0.3);
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
-}
-
-
-.topnav a {
-  float: right;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.logo {
-  float:left;
-  padding: -5px -5px;
-}
-
-.topnav a:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-  color: black;
-  transition: background 500ms;
-}
-
-.topnav a.active {
-  background-color: #04AA6D;
-  color: white;
-}
-
-
 
 .project-item {
   width: 70%;
@@ -77,9 +41,9 @@ body {
   justify-content: center;
 }
 
-.project-img {
+.project-description img{
   flex: 1;
-  padding-left: 10%;
+  max-width: 100%;
 }
 
 .project-description {
