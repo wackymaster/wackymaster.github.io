@@ -16,7 +16,7 @@ body {
 }
 
 .intro{
-  width: 80%;
+  width: 100%;
   max-width: 90rem;
   margin: 0 auto;
   padding: 0 1.5rem;
@@ -42,18 +42,19 @@ body {
 
 .showcase {
   position: relative;
-  width: 65%;
+  width: 75%;
+  max-width: 75%;
   height: 70%;
-  margin: 1.5em auto;
-  overflow: hidden;
+  margin: auto auto;
   background: transparent;
   transition: all .5s ease;
   text-align: left;
-
+  overflow:auto;
 }
 
 .showcase p{
   height: fit-content;
+
 }
 
 .desc {
