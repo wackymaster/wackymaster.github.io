@@ -19,7 +19,9 @@ body {
   width: 100%;
   max-width: 90rem;
   margin: 0 auto;
+  padding: 2rem 1rem;
   padding-top: 3rem;
+  margin: 1rem auto;
   text-align: center;
 }
 
