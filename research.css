@@ -12,7 +12,7 @@ body {
 .intro{
   width: 70%;
   max-width: 70%;
-  margin: 0 auto;
+  margin: 1rem auto;
   padding-top: 3rem;
   text-align: center;
 }
@@ -20,7 +20,7 @@ body {
 .intro h1{
   color:rgb(42, 42, 42);
   text-align: left;
-  font-size: 50px;
+  font-size: min(50px, 10vw);
   font-family: 'Open Sans', sans-serif;
   font-weight: 200;
 }

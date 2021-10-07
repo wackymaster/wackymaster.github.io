@@ -19,7 +19,6 @@ body {
   width: 100%;
   max-width: 90rem;
   margin: 0 auto;
-  padding: 0 1.5rem;
   padding-top: 3rem;
   text-align: center;
 }
@@ -30,7 +29,7 @@ body {
   font-size: 60px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 100;
-
+  font-size: min(50px, 10vw);
 }
 
 .intro h2{
