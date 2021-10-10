@@ -61,7 +61,7 @@ body {
 .desc {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: fit-content;
   z-index: 2;
   color:rgb(255, 255, 255);
   padding: 10px 10px;
@@ -71,7 +71,6 @@ body {
   float: right;
   width: 500px;
   max-width: 95%;
-  max-height: 95%;
   margin-left: 50px;
   margin-bottom: 30px;
   opacity: 1;
@@ -86,7 +85,7 @@ body {
 
 }
 
-.showcase:hover {
+.showcase:hover{
   height: 75%;
   background-color: rgba(255, 255, 255, 0.3);
   transition: all .5s ease;
