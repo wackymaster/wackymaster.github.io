@@ -2,7 +2,7 @@ window.addEventListener('resize', draw_emacs);
 
 window.addEventListener('load', draw_emacs);
 
-
+function visit() { console.log("AA"); }
 function draw_emacs() {
   var content = document.getElementById("mytxt");
   content.innerHTML = "";
@@ -50,9 +50,22 @@ function draw_emacs() {
     else {
       color = "black"
     }
+    if (words[i].includes("URL(")) {
+      span.innerHTML = "";
+
+      var a = document.createElement('a');
+      var b = document.createElement('button');
+      b.innerHTML = words[i].substring(22, words[i].length - 3);
+      var url = words[i].substring(22, words[i].length - 3);
+      a.href = url;
+      a.appendChild(b);
+      x.appendChild(a);
+    }
     span.style.fontSize = "min(1vw, 10px);";
     span.style.color = color;
     span.style.width = String(width);
+
+
     x.appendChild(span);
   }
   var fontSize = 12;
