@@ -52,12 +52,13 @@ function draw_emacs() {
     }
     span.style.fontSize = "min(1vw, 10px);";
     span.style.color = color;
+    span.style.width = String(width);
     x.appendChild(span);
   }
   var fontSize = 12;
   x.style.fontSize = "min(1vw, " + String(fontSize) + "px);";
   x.style.width = String(width);
-
+  x.style.borderStyle = "solid";
 
   document.body.appendChild(x);
 
@@ -66,6 +67,7 @@ function draw_emacs() {
   bottomImage.src = 'images/bottom.png';
   var content = document.getElementById("mytxt");
   content.appendChild(bottomImage);
+  content.style.width = String(width);
   bottomImage.style.zIndex = "-1000";
   content.style.alignItems = "center";
 }
