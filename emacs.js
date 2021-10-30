@@ -2,6 +2,7 @@ window.addEventListener('resize', draw_emacs);
 
 window.addEventListener('load', draw_emacs);
 
+
 function draw_emacs() {
   var content = document.getElementById("mytxt");
   content.innerHTML = "";
@@ -55,6 +56,8 @@ function draw_emacs() {
   }
   var fontSize = 12;
   x.style.fontSize = "min(1vw, " + String(fontSize) + "px);";
+  x.style.width = String(width);
+
 
   document.body.appendChild(x);
 
@@ -64,5 +67,7 @@ function draw_emacs() {
   var content = document.getElementById("mytxt");
   content.appendChild(bottomImage);
   bottomImage.style.zIndex = "-1000";
+  content.style.alignItems = "center";
 }
 
+draw_emacs();
