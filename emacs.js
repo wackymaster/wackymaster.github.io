@@ -6,7 +6,7 @@ window.addEventListener('load', draw_emacs);
 function draw_emacs() {
   var content = document.getElementById("mytxt");
   content.innerHTML = "";
-  width = Math.max(screen.width / 2, 500);
+  width = screen.width / 2;
   height = "auto";
 
   var topImage = new Image(width, 200);
@@ -58,18 +58,17 @@ function draw_emacs() {
   var fontSize = 12;
   x.style.fontSize = "min(1vw, " + String(fontSize) + "px);";
   x.style.width = String(width);
-  x.style.borderStyle = "solid";
 
   document.body.appendChild(x);
 
   var bottomImage = new Image(width, 200);
   bottomImage.style.height = "auto";
   bottomImage.src = 'images/bottom.png';
-  var content = document.getElementById("mytxt");
   content.appendChild(bottomImage);
   content.style.width = String(width);
   bottomImage.style.zIndex = "-1000";
   content.style.alignItems = "center";
+  content.style.margin = "0 auto";
 }
 
 draw_emacs();
