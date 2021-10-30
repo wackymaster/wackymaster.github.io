@@ -79,7 +79,7 @@ function draw_emacs() {
   bottomImage.src = 'images/bottom.png';
   content.appendChild(bottomImage);
   content.style.width = String(width);
-  bottomImage.style.zIndex = "-1000";
+  content.style.zIndex = "-999";
   content.style.alignItems = "center";
   content.style.margin = "0 auto";
 }
