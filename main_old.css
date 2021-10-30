@@ -3,25 +3,14 @@ html, body{
 }
 
 body {
-  margin-top: 20px;
+  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background-image: url("images/background.png") ;
-  background-size: contain;
+  background-image: url("images/background.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: top 50px center;
-  background-origin: content-box;
+  background-position: left top;
 }
 
-@media (min-width: 500px) {
-  body {
-    background-image: url("images/background2.png") ;
-  }
-}
-@media (min-width: 900px) {
-  body {
-    background-image: url("images/background.png") ;
-  }
-}
 .container {
   width: 100%;
   max-width: 90rem;
@@ -31,7 +20,7 @@ body {
 
 .main-message {
   z-index: -1;
-  width: 30%;
+  width: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -45,27 +34,27 @@ body {
   content:'';
   z-index: -1;
   /* border: 5px solid lightgray; */
-  width: 30%;
-  height: 200%;
+  width: 60%;
+  height: 300%;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  background:rgba(0, 0, 0, 0.8);
+  background:rgba(0, 0, 0, 0.5);
   box-shadow: 5px 10px 18px #202020;
 
 }
 
 .main-message h1 {
   width: 60%;
-  letter-spacing: min(.4vw, 0.5rem);
-  font-weight: 200;
+  letter-spacing: 1rem;
+  font-weight: 500;
   font-family: 'Roboto Mono', monospace;
   margin: auto;
   color: white;
   text-align: center;
-  font-size: min(2vw, 40px);
+  font-size: min(5vw, 100px);
 }
 
 @keyframes blink {
@@ -88,7 +77,7 @@ body {
   color: white;
   display: inline;
   text-size-adjust: none;
-  font-size: min(1.5vw, 20px);
+  font-size: min(2.5vw, 30px);
 }
 
 #sequence {
