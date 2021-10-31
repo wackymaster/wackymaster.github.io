@@ -9,7 +9,7 @@ function draw_emacs() {
     return;
   }
   content.innerHTML = "";
-  width = Math.max(screen.width / 2, 1000);
+  width = Math.max(screen.width / 2, 700);
   height = "auto";
 
   var topImage = new Image(width, 200);
