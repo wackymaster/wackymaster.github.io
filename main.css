@@ -4,11 +4,9 @@ html, body{
 }
 
 
-.content {
-  position: absolute;
-  padding-left: 0;
-  justify-content: center;
-  margin: auto;
+.no-padding {
+  padding-left: 0 !important;
+  max-width: 100% !important;
 }
 
 .box {
