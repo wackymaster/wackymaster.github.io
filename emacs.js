@@ -5,8 +5,11 @@ window.addEventListener('load', draw_emacs);
 function visit() { console.log("AA"); }
 function draw_emacs() {
   var content = document.getElementById("mytxt");
+  if (content == null) {
+    return;
+  }
   content.innerHTML = "";
-  width = screen.width / 2;
+  width = Math.max(screen.width / 2, 400);
   height = "auto";
 
   var topImage = new Image(width, 200);
@@ -59,29 +62,26 @@ function draw_emacs() {
       var url = words[i].substring(22, words[i].length - 3);
       a.href = url;
       a.appendChild(b);
-      x.appendChild(a);
+      content.appendChild(a);
     }
     span.style.fontSize = "min(1vw, 10px);";
     span.style.color = color;
     span.style.width = String(width);
-
-
     x.appendChild(span);
   }
   var fontSize = 12;
   x.style.fontSize = "min(1vw, " + String(fontSize) + "px);";
   x.style.width = String(width);
 
-  document.body.appendChild(x);
+  // content.appendChild(x);
 
   var bottomImage = new Image(width, 200);
   bottomImage.style.height = "auto";
+  bottomImage.style.margin = "auto";
   bottomImage.src = 'images/bottom.png';
+  bottomImage.style.width = "200";
   content.appendChild(bottomImage);
   content.style.width = String(width);
-  content.style.zIndex = "-999";
-  content.style.alignItems = "center";
-  content.style.margin = "0 auto";
 }
 
 draw_emacs();
