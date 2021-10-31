@@ -1,12 +1,14 @@
 html, body{
-  margin:0px;
+  margin: 0px;
   height: 100%;
 }
 
-.container {
-  display: flex;
-  height: 300px;
+
+.content {
+  position: absolute;
+  padding-left: 0;
   justify-content: center;
+  margin: auto;
 }
 
 .box {
@@ -17,12 +19,13 @@ html, body{
   justify-content: center;
   padding-top: 50px;
   font-size: min(2.5vw, 14px);
+  text-align: center;
+
 }
 
 .main-message {
-
   width: 30%;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -34,14 +37,14 @@ html, body{
   content:'';
   z-index: -15;
   /* border: 5px solid lightgray; */
-  width: 35%;
+  width: min(40%, 500px);
   height: 200%;
   position: absolute;
+  top: 40%;
   left: 50%;
-  top: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  background:rgba(0, 0, 0, 0.8);
+  background:rgba(0, 0, 0, 0.6);
   box-shadow: 5px 10px 18px #202020;
 
 }

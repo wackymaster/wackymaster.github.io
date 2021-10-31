@@ -9,7 +9,7 @@ function draw_emacs() {
     return;
   }
   content.innerHTML = "";
-  width = Math.max(screen.width / 2, 700);
+  width = Math.min(screen.width, 700);
   height = "auto";
 
   var topImage = new Image(width, 200);
@@ -42,7 +42,7 @@ function draw_emacs() {
     var span = document.createElement('span');
     span.innerHTML = words[i] + " ";
     if (words[i].includes("\n")) {
-      span.innerHTML += "<br> ";
+      span.innerHTML += "<br>";
     }
     if (words[i].includes("\t")) {
       span.style.marginLeft = "20px";
@@ -72,8 +72,6 @@ function draw_emacs() {
   var fontSize = 12;
   x.style.fontSize = "min(1vw, " + String(fontSize) + "px);";
   x.style.width = String(width);
-
-  // content.appendChild(x);
 
   var bottomImage = new Image(width, 200);
   bottomImage.style.height = "auto";
