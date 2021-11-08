@@ -5,6 +5,9 @@ html, body{
   overflow-x: hidden;
 }
 
+img{
+  pointer-events: none;
+}
 
 .no-padding {
   padding-left: 0 !important;
