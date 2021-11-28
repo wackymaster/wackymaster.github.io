@@ -121,6 +121,20 @@ class Drawer {
     }
   }
 
+  drawArrow(context, fromx, fromy, tox, toy, arrowSize, style) {
+    var dx = tox - fromx;
+    var dy = toy - fromy;
+    var angle = Math.atan2(dy, dx);
+    context.strokeStyle = style;
+    context.beginPath();
+    context.moveTo(fromx, fromy);
+    context.lineTo(tox, toy);
+    context.lineTo(tox - arrowSize * Math.cos(angle - Math.PI / 6), toy - arrowSize * Math.sin(angle - Math.PI / 6));
+    context.moveTo(tox, toy);
+    context.lineTo(tox - arrowSize * Math.cos(angle + Math.PI / 6), toy - arrowSize * Math.sin(angle + Math.PI / 6));
+    context.stroke();
+  }
+
   drawParticles(particles) {
     if (canvas.getContext) {
       var ctx = canvas.getContext('2d');
@@ -131,16 +145,26 @@ class Drawer {
         let particle = particles[i];
         let x = particle.position.x;
         let y = particle.position.y;
+        let particleSize = 10 + Math.abs(particle.mass) * PARTICLE_SIZE
+
         // Particles who keep phasing in and out don't draw
         if (x < 5 || x > SCREEN_X - 5) continue;
         if (y < 5 || y > SCREEN_Y - 5) continue;
-
-        // Set color and draw
+        // Set color and draw particle circle
         ctx.fillStyle = this.colors[i];
+        ctx.strokeStyle = "black";
+
         ctx.beginPath();
-        ctx.arc(x, y, 10 + Math.abs(particle.mass) * PARTICLE_SIZE, 0, 2 * Math.PI, true);
+        ctx.arc(x, y, particleSize, 0, 2 * Math.PI, true);
         ctx.stroke();
         ctx.fill();
+
+        // Draw arrow of direction
+        let vx = particle.velocity.x;
+        let vy = particle.velocity.y;
+        let endx = x + vx;
+        let endy = y + vy;
+        this.drawArrow(ctx, x, y, endx, endy, particle.velocity.magnitude(), "black");
       }
     }
   }
