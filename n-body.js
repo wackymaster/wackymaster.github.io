@@ -1,11 +1,12 @@
 let GRAVITATIONAL_CONSTANT = 6.67 * Math.pow(10, -11);
-let NUM_PARTICLES = 20;
-let TIME_STEP = .1;
+let NUM_PARTICLES = 10;
+let TIME_STEP = .01;
 let TARGET_FPS = 30;
 let MAX_VELOCITY = 10;
 let PARTICLE_SIZE = 10;
-let PARTICLE_MAX_MASS = 1;
-
+let PARTICLE_MAX_MASS = 3;
+let PARTICLE_MIN_MASS = .5;
+let MOUSE_PARTICLE_MASS = 5;
 
 var canvas = document.getElementById("nBodyCanvas");
 let SCREEN_X = canvas.clientWidth;
@@ -47,7 +48,8 @@ class NBody {
   constructor(n) {
     this.particles = [];
     for (let i = 0; i < n; i++) {
-      let randomParticle = new Particle(Math.random() * 2 * PARTICLE_MAX_MASS - PARTICLE_MAX_MASS,
+      let randomParticle = new Particle(PARTICLE_MIN_MASS + Math.random() *
+        (PARTICLE_MAX_MASS - PARTICLE_MIN_MASS),
         Math.random() * SCREEN_X, Math.random() * SCREEN_Y);
       this.particles.push(randomParticle);
     }
@@ -66,15 +68,15 @@ class NBody {
           * Math.pow(radius.magnitude(), 3);
         let force = radius.multiplyScalar(force_magnitude);
         // Update
-        pi.force = force;
-        pj.force = force.multiplyScalar(-1);
+        pi.force = pi.force.addVectors(force);
+        pj.force = pj.force.addVectors(force.multiplyScalar(-1));
       }
     }
   }
 
   moveParticles(timestep) {
     // Don't move mouse particle, so only go to num particles
-    for (let i = 0; i < this.particles.length; i++) {
+    for (let i = 0; i < NUM_PARTICLES; i++) {
       let particle = this.particles[i];
       // Get force and update velocity and position
       let force = particle.force;
@@ -176,7 +178,14 @@ class Drawer {
 
 let simulation = new NBody(NUM_PARTICLES);
 let drawer = new Drawer(NUM_PARTICLES);
+let mouseParticle = new Particle(MOUSE_PARTICLE_MASS, 0, 0);
+function moveMouse(e) {
+  mouseParticle.position.x = e.clientX;
+  mouseParticle.position.y = e.clientY;
+}
+// simulation.particles.push(mouseParticle);
 
+document.addEventListener("mousemove", moveMouse);
 
 var intervalId = window.setInterval(function () {
   simulation.step(TIME_STEP);
