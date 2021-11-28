@@ -1,13 +1,13 @@
 let GRAVITATIONAL_CONSTANT = 6.67 * Math.pow(10, -11);
 let NUM_PARTICLES = 30;
-let TIME_STEP = .01;
+let TIME_STEP = .0025;
 let TARGET_FPS = 60;
 let MAX_VELOCITY = 10;
 let PARTICLE_SIZE = 5;
-let PARTICLE_MAX_MASS = 3;
+let PARTICLE_MAX_MASS = 5;
 let PARTICLE_MIN_MASS = .5;
-let MOUSE_PARTICLE_MASS = 5;
-let MAX_NUMBER_PREV_POSITIONS = 30;
+let MOUSE_PARTICLE_MASS = 15;
+let MAX_NUMBER_PREV_POSITIONS = 20;
 
 var canvas = document.getElementById("nBodyCanvas");
 let SCREEN_X = canvas.clientWidth;
@@ -155,18 +155,27 @@ class Drawer {
   }
 
   drawPath(context, particle, particleSize, fillStyle) {
-    for (let i = 0; i < particle.previousPos.length; i++) {
+    for (let i = 0; i < particle.previousPos.length - 1; i++) {
       let position = particle.previousPos[i];
+      let position2 = particle.previousPos[i + 1];
+      // Don't draw inside the particle itself
       if (position.distance(particle.position) < particleSize) continue;
-      let x = position.x;
-      let y = position.y;
+      // Don't draw across the screen
+      let distanceDrawn = position.distance(position2);
+      if (Math.abs(position.x - position2.x) > SCREEN_X / 3) continue;
+      if (Math.abs(position.y - position2.y) > SCREEN_Y / 3) continue;
+
       context.strokeStyle = fillStyle;
       context.fillStyle = fillStyle;
-
       context.beginPath();
-      context.arc(x, y, 1, 0, 2 * Math.PI, true);
+      context.moveTo(position.x, position.y);
+      context.lineTo(position2.x, position2.y);
       context.stroke();
       context.fill();
+      // context.beginPath();
+      // context.arc(x, y, 1.5, 0, 2 * Math.PI, true);
+      // context.stroke();
+      // context.fill();
     }
   }
 
@@ -196,11 +205,12 @@ class Drawer {
         ctx.fill();
 
         // Draw arrow of direction
-        let vx = particle.velocity.x;
-        let vy = particle.velocity.y;
-        let endx = x + vx;
-        let endy = y + vy;
-        // this.drawArrow(ctx, x, y, endx, endy, particle.velocity.magnitude(), "black");
+        // let vx = particle.velocity.x;
+        // let vy = particle.velocity.y;
+        // let theta = Math.atan2(vy, vx);
+        // let endx = x + Math.cos(theta);
+        // let endy = y + Math.sin(theta);
+        // this.drawArrow(ctx, x, y, endx, endy, 5, "black");
 
         // Draw trail
         this.drawPath(ctx, particle, particleSize, this.colors[i]);
@@ -212,17 +222,25 @@ class Drawer {
 
 let simulation = new NBody(NUM_PARTICLES);
 let drawer = new Drawer(NUM_PARTICLES);
-let mouseParticle = new Particle(MOUSE_PARTICLE_MASS, 0, 0);
-function moveMouse(e) {
-  mouseParticle.position.x = e.clientX;
-  mouseParticle.position.y = e.clientY;
-}
+// let mouseParticle = new Particle(MOUSE_PARTICLE_MASS, 0, 0);
+// function moveMouse(e) {
+//   mouseParticle.position.x = e.clientX;
+//   mouseParticle.position.y = e.clientY;
+// }
 // simulation.particles.push(mouseParticle);
-
 // document.addEventListener("mousemove", moveMouse);
-
 var intervalId = window.setInterval(function () {
   simulation.step(TIME_STEP);
   drawer.drawParticles(simulation.particles);
 
 }, 1000 / TARGET_FPS);
+
+function resize() {
+  var canvas = document.getElementById("nBodyCanvas");
+  SCREEN_X = canvas.clientWidth;
+  SCREEN_Y = canvas.clientHeight;
+  canvas.width = SCREEN_X;
+  canvas.height = SCREEN_Y;
+}
+
+window.onresize = resize;
