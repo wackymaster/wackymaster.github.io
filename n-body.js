@@ -56,15 +56,18 @@ class NBody {
   updateForces() {
     for (let i = 0; i < this.particles.length; i++) {
       for (let j = i + 1; j < this.particles.length; j++) {
-        let ri = this.particles[i].position;
-        let rj = this.particles[j].position;
+        let pi = this.particles[i];
+        let pj = this.particles[j];
+        let ri = pi.position;
+        let rj = pj.position;
         // Calculate force between particles
         let radius = ri.subtractVectors(rj);
-        let force_magnitude = -1 * GRAVITATIONAL_CONSTANT * Math.pow(radius.magnitude(), 3);
+        let force_magnitude = -1 * pi.mass * pj.mass * GRAVITATIONAL_CONSTANT
+          * Math.pow(radius.magnitude(), 3);
         let force = radius.multiplyScalar(force_magnitude);
         // Update
-        this.particles[i].force = force;
-        this.particles[j].force = force.multiplyScalar(-1);
+        pi.force = force;
+        pj.force = force.multiplyScalar(-1);
       }
     }
   }
