@@ -1,12 +1,13 @@
 let GRAVITATIONAL_CONSTANT = 6.67 * Math.pow(10, -11);
-let NUM_PARTICLES = 10;
+let NUM_PARTICLES = 30;
 let TIME_STEP = .01;
-let TARGET_FPS = 30;
+let TARGET_FPS = 60;
 let MAX_VELOCITY = 10;
-let PARTICLE_SIZE = 10;
+let PARTICLE_SIZE = 5;
 let PARTICLE_MAX_MASS = 3;
 let PARTICLE_MIN_MASS = .5;
 let MOUSE_PARTICLE_MASS = 5;
+let MAX_NUMBER_PREV_POSITIONS = 30;
 
 var canvas = document.getElementById("nBodyCanvas");
 let SCREEN_X = canvas.clientWidth;
@@ -33,6 +34,9 @@ class Vector {
   magnitude() {
     return Math.sqrt(Math.pow(this.x, 2), Math.pow(this.y, 2));
   }
+  distance(v) {
+    return this.subtractVectors(v).magnitude();
+  }
 }
 
 class Particle {
@@ -41,6 +45,15 @@ class Particle {
     this.position = new Vector(x, y);
     this.velocity = new Vector(0, 0);
     this.force = new Vector(0, 0);
+    this.previousPos = [];
+  }
+
+  addPosition() {
+    if (this.previousPos.length >= MAX_NUMBER_PREV_POSITIONS) {
+      this.previousPos.shift();
+    }
+    this.previousPos.push(this.position);
+
   }
 }
 
@@ -81,7 +94,7 @@ class NBody {
       // Get force and update velocity and position
       let force = particle.force;
       let acceleration = force.multiplyScalar(particle.mass);
-      let deltaV = acceleration.multiplyScalar(timestep);
+      let deltaV = acceleration.multiplyScalar(timestep / 2);
       particle.velocity = particle.velocity.addVectors(deltaV);
       let deltaP = particle.velocity.multiplyScalar(timestep);
       particle.position = particle.position.addVectors(deltaP);
@@ -99,7 +112,8 @@ class NBody {
       if (particle.position.y > SCREEN_Y) {
         particle.position.y -= SCREEN_Y;
       }
-
+      // Add to previous positions
+      particle.addPosition();
       // Keep velocities under control
       if (particle.velocity.magnitude() > MAX_VELOCITY) {
         particle.velocity = particle.velocity.multiplyScalar(MAX_VELOCITY / particle.velocity.magnitude())
@@ -140,6 +154,22 @@ class Drawer {
     context.stroke();
   }
 
+  drawPath(context, particle, particleSize, fillStyle) {
+    for (let i = 0; i < particle.previousPos.length; i++) {
+      let position = particle.previousPos[i];
+      if (position.distance(particle.position) < particleSize) continue;
+      let x = position.x;
+      let y = position.y;
+      context.strokeStyle = fillStyle;
+      context.fillStyle = fillStyle;
+
+      context.beginPath();
+      context.arc(x, y, 1, 0, 2 * Math.PI, true);
+      context.stroke();
+      context.fill();
+    }
+  }
+
   drawParticles(particles) {
     if (canvas.getContext) {
       var ctx = canvas.getContext('2d');
@@ -147,6 +177,10 @@ class Drawer {
       ctx.globalAlpha = 0.75;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for (let i = 0; i < particles.length; i++) {
+        // Set color and draw particle circle
+        ctx.fillStyle = this.colors[i];
+        ctx.strokeStyle = "black";
+        // Particle attributes
         let particle = particles[i];
         let x = particle.position.x;
         let y = particle.position.y;
@@ -155,10 +189,7 @@ class Drawer {
         // Particles who keep phasing in and out don't draw
         if (x < 5 || x > SCREEN_X - 5) continue;
         if (y < 5 || y > SCREEN_Y - 5) continue;
-        // Set color and draw particle circle
-        ctx.fillStyle = this.colors[i];
-        ctx.strokeStyle = "black";
-
+        // Draw circle
         ctx.beginPath();
         ctx.arc(x, y, particleSize, 0, 2 * Math.PI, true);
         ctx.stroke();
@@ -169,7 +200,10 @@ class Drawer {
         let vy = particle.velocity.y;
         let endx = x + vx;
         let endy = y + vy;
-        this.drawArrow(ctx, x, y, endx, endy, particle.velocity.magnitude(), "black");
+        // this.drawArrow(ctx, x, y, endx, endy, particle.velocity.magnitude(), "black");
+
+        // Draw trail
+        this.drawPath(ctx, particle, particleSize, this.colors[i]);
       }
     }
   }
@@ -185,7 +219,7 @@ function moveMouse(e) {
 }
 // simulation.particles.push(mouseParticle);
 
-document.addEventListener("mousemove", moveMouse);
+// document.addEventListener("mousemove", moveMouse);
 
 var intervalId = window.setInterval(function () {
   simulation.step(TIME_STEP);
