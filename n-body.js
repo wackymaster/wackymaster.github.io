@@ -7,7 +7,7 @@ let PARTICLE_SIZE = 5;
 let PARTICLE_MAX_MASS = 5;
 let PARTICLE_MIN_MASS = .5;
 let MOUSE_PARTICLE_MASS = 15;
-let MAX_NUMBER_PREV_POSITIONS = 20;
+let MAX_NUMBER_PREV_POSITIONS = 30;
 
 var canvas = document.getElementById("nBodyCanvas");
 let SCREEN_X = canvas.clientWidth;
@@ -164,7 +164,7 @@ class Drawer {
       let distanceDrawn = position.distance(position2);
       if (Math.abs(position.x - position2.x) > SCREEN_X / 3) continue;
       if (Math.abs(position.y - position2.y) > SCREEN_Y / 3) continue;
-
+      context.globalAlpha = i / particle.previousPos.length;
       context.strokeStyle = fillStyle;
       context.fillStyle = fillStyle;
       context.beginPath();
@@ -182,8 +182,6 @@ class Drawer {
   drawParticles(particles) {
     if (canvas.getContext) {
       var ctx = canvas.getContext('2d');
-      // Turn transparency on
-      ctx.globalAlpha = 0.75;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for (let i = 0; i < particles.length; i++) {
         // Set color and draw particle circle
@@ -199,9 +197,12 @@ class Drawer {
         if (x < 5 || x > SCREEN_X - 5) continue;
         if (y < 5 || y > SCREEN_Y - 5) continue;
         // Draw circle
+
         ctx.beginPath();
         ctx.arc(x, y, particleSize, 0, 2 * Math.PI, true);
+        ctx.globalAlpha = 1;
         ctx.stroke();
+        ctx.globalAlpha = 0.55;
         ctx.fill();
 
         // Draw arrow of direction
