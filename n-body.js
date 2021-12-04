@@ -8,6 +8,7 @@ let PARTICLE_MAX_MASS = 5;
 let PARTICLE_MIN_MASS = .5;
 let MOUSE_PARTICLE_MASS = 15;
 let MAX_NUMBER_PREV_POSITIONS = 30;
+let WRAP_AROUND = false;
 
 var canvas = document.getElementById("nBodyCanvas");
 let SCREEN_X = canvas.clientWidth;
@@ -100,17 +101,19 @@ class NBody {
       particle.position = particle.position.addVectors(deltaP);
 
       // Wrap around side
-      if (particle.position.x < 0) {
-        particle.position.x += SCREEN_X;
-      }
-      if (particle.position.x > SCREEN_X) {
-        particle.position.x -= SCREEN_X;
-      }
-      if (particle.position.y < 0) {
-        particle.position.y += SCREEN_Y;
-      }
-      if (particle.position.y > SCREEN_Y) {
-        particle.position.y -= SCREEN_Y;
+      if (WRAP_AROUND) {
+        if (particle.position.x < 0) {
+          particle.position.x += SCREEN_X;
+        }
+        if (particle.position.x > SCREEN_X) {
+          particle.position.x -= SCREEN_X;
+        }
+        if (particle.position.y < 0) {
+          particle.position.y += SCREEN_Y;
+        }
+        if (particle.position.y > SCREEN_Y) {
+          particle.position.y -= SCREEN_Y;
+        }
       }
       // Add to previous positions
       particle.addPosition();
