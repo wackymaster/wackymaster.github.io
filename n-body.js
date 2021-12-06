@@ -1,10 +1,10 @@
 let GRAVITATIONAL_CONSTANT = 6.67 * Math.pow(10, -11);
 let NUM_PARTICLES = 30;
 let TIME_STEP = .0025;
-let TARGET_FPS = 60;
+let TARGET_FPS = 120;
 let MAX_VELOCITY = 500;
 // let PARTICLE_SIZE = 5;
-let PARTICLE_MAX_MASS = 5;
+let PARTICLE_MAX_MASS = 3;
 let PARTICLE_MIN_MASS = .5;
 let MOUSE_PARTICLE_MASS = 15;
 let MAX_NUMBER_PREV_POSITIONS = 30;
@@ -16,7 +16,7 @@ let SCREEN_Y = canvas.clientHeight;
 canvas.width = SCREEN_X;
 canvas.height = SCREEN_Y;
 
-let PARTICLE_SIZE = 5 * (Math.min(SCREEN_X, SCREEN_Y) / 800);
+let PARTICLE_SIZE = 8 * (Math.min(SCREEN_X, SCREEN_Y) / 800);
 
 
 class Vector {
@@ -198,8 +198,10 @@ class Drawer {
         let particleSize = 10 + Math.abs(particle.mass) * PARTICLE_SIZE
 
         // Particles who keep phasing in and out don't draw
-        if (x < 5 || x > SCREEN_X - 5) continue;
-        if (y < 5 || y > SCREEN_Y - 5) continue;
+        if (WRAP_AROUND) {
+          if (x < 5 || x > SCREEN_X - 5) continue;
+          if (y < 5 || y > SCREEN_Y - 5) continue;
+        }
         // Draw circle
 
         ctx.beginPath();
