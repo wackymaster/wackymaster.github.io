@@ -2,8 +2,8 @@ let GRAVITATIONAL_CONSTANT = 6.67 * Math.pow(10, -11);
 let NUM_PARTICLES = 30;
 let TIME_STEP = .0025;
 let TARGET_FPS = 60;
-let MAX_VELOCITY = 10;
-let PARTICLE_SIZE = 5;
+let MAX_VELOCITY = 500;
+// let PARTICLE_SIZE = 5;
 let PARTICLE_MAX_MASS = 5;
 let PARTICLE_MIN_MASS = .5;
 let MOUSE_PARTICLE_MASS = 15;
@@ -16,6 +16,7 @@ let SCREEN_Y = canvas.clientHeight;
 canvas.width = SCREEN_X;
 canvas.height = SCREEN_Y;
 
+let PARTICLE_SIZE = 5 * (Math.min(SCREEN_X, SCREEN_Y) / 800);
 
 
 class Vector {
