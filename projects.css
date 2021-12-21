@@ -12,7 +12,10 @@ body {
   );
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-
+  width: 95%;
+  display: table-cell;
+  vertical-align: middle;
+  overflow-x: hidden;
 }
 
 .intro{
@@ -41,53 +44,40 @@ body {
   font-weight: 100;
 }
 
-.showcase {
-  position: relative;
-  width: 75%;
-  max-width: 75%;
-  height: 70%;
-  margin: auto auto;
-  background: transparent;
-  transition: all .5s ease;
-  text-align: left;
-  overflow:auto;
+.row {
+  display: flex;
 }
 
-.showcase p{
-  height: fit-content;
-
+.column {
+  flex: 30%;
 }
 
 .desc {
-  position: absolute;
-  width: 100%;
-  height: fit-content;
   z-index: 2;
   color:rgb(255, 255, 255);
-  padding: 10px 10px;
+  
 }
 
-.desc img {
-  float: right;
-  width: 400px;
+.project {
+  padding-top: 20px;
+  transition: 0.3s;
+  border-radius: 15px;
+  text-align:center;
+  height: 650px;
+  overflow: hidden;
+}
+
+.project p {
+  text-align: left;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.project:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+}
+
+.project img{
+  height: 300px;
   max-width: 95%;
-  margin-left: 50px;
-  margin-bottom: 30px;
-  opacity: 1;
-  position: relative;
-  transition: all .5s ease-in-out;
-
 }
-
-.desc img:hover {
-  width: 525px;
-  transition: all 1s ease-in-out;
-
-}
-
-.showcase:hover{
-  height: 80%;
-  background-color: rgba(255, 255, 255, 0.3);
-  transition: all .5s ease;
-}
-

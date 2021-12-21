@@ -44,132 +44,118 @@
     <h1>My Projects</h1>
     <h2>Here's a brief showcase of some of the projects I have worked on.
       Unfortunately, I have lost the code for some of my older programs
-      (younger me wasn't aware of version control). Aside, hope you enjoy!</h2>
+      (younger me wasn't aware of version control). Aside, I hope you enjoy!</h2>
 
   </div>
 
+  <div class="row">
+    <!--Column 1-->
+    <div class="column">
+      <div class="project">
+        <div class="desc">
+          <img src="images/ocaml.png" onmouseover="this.src='images/ocaml.gif';"
+            onmouseout="this.src='images/ocaml.png';" alt="Clarkanoid">
 
-  <div class="showcase">
-    <div class="desc">
-      <img src="images/ocaml.png" onmouseover="this.src='images/ocaml.gif';" onmouseout="this.src='images/ocaml.png';"
-        alt="Clarkanoid">
+          <h2>"The Clarkanoid"</h2>
+          <i>RPG Game</i>
+          <p> Entirely made in OCaml (using functional and imperative features).
+            Implements its own Entity-Component-System, custom pixel art,
+            unique enemy AI, custom soundtracks, animations, and storyline.
+          </p>
+        </div>
+      </div>
+      <div class="project">
 
-      <h2>"The Clarkanoid"</h2>
-      <p>
-        You are a University professor, yet suddenly you have turned into a camel.
-        Your friend, the owl, has been taken by the Imperials, which the all-powerful
-        "Ark" controls. Recover the owl by going on an adventure through six
-        terrains, collecting valuable items, defeating a dragon in space, and
-        finally battling the Ark.
-      </p>
-      <p> This game was made with two partners over the course of two months. The
-        entire game is coded in OCaml (though it uses an SDL library for graphics).
-        The game takes advantage of both functional and imperative features of OCaml.
-        The Clarkanoid implements its own Entity-Component-System and features
-        entirely custom pixel art, unique AI's for each enemy, and custom soundtracks,
-        animations, and storylines.
-      </p>
+        <div class="desc">
+          <img src="images/thomson.png" onmouseover="this.src='images/thomson.gif';"
+            onmouseout="this.src='images/thomson.png';">
+
+          <h2>Thomson Problem</h2>
+          <i>Physics Simulation</i>
+          <p>
+            I built this project in around 2-3 hours as a test of my C++ "skills."
+            This is a simulation of electrons existing on a "sphere" world. This problem
+            minimizes the forces/energy between every electron pair. I also built
+            a postprocessor to visualize the electrons.
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="showcase">
-    <div class="desc">
-      <img src="images/steer.jpg" alt="Steer">
-      <h2>Steer Calendar</h2>
-      <p> This was an app I built during the spring break in tenth grade.
-        Steer Calendar is an iOS app written in Swift. A student registers
-        their classes using Google Firebase, which are then saved using SQLite.
-        The app fetches information from the calendars of the saved classes, parses
-        the iCal data, and then displays assignments and other course content on
-        students’ devices.
-      </p>
-      <p>
-        *Note: due to the financial cost of an Apple Developer account and
-        my graduation of high school, I am no longer hosting this on the app store
-      </p>
+    <!-- Second Column -->
+    <div class="column">
+      <div class="project">
+        <div class="desc">
+          <img src="images/snake.jpg" onmouseover="this.src='images/snake.gif';"
+            onmouseout="this.src='images/snake.jpg';" alt="SnakeAI">
+
+          <h2>Snake AI Gamebot </h2>
+          <i>Machine Learning</i>
+          <p>Using Tensorflow to train a simple model with real player data. The data
+            contained information such as its direction, the distance to the wall,
+            and the vector from the head to the red dot.
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="desc">
+          <img src="images/pathfinder.png" alt="TSP" onmouseover="this.src='images/pathfinder.gif';"
+            onmouseout="this.src='images/pathfinder.png';">
+
+          <h2>Traveling Salesman Problem</h2>
+          <i>Algorithms</i>
+          <p> Algorithms feature brute force, a greedy algorithm, a greedy algorithm
+            with swapping, and an ant-colony heuristic, in which
+            several "ants" travel along the paths and leave "pheremones". The paths
+            with the most pheremones tends to suggest the quickest path.
+          </p>
+        </div>
+      </div>
+
     </div>
-  </div>
 
-  <div class="showcase">
+    <!-- Third Column-->
+    <div class="column">
+      <div class="project">
+        <div class="desc">
+          <img src="images/steer.jpg" alt="Steer">
+          <h2>Steer Calendar</h2>
+          <i>iOS App (Swift)</i>
+          <p> Built during the spring break in 10th grade.
+            A student registers their classes using Google Firebase, which are then saved using SQLite.
+            The app fetches information from the calendars of the saved classes, parses
+            the iCal data, and then displays assignments and other course content on
+            students’ devices.
+          </p>
+          <p>
+            *Note: due to the financial cost of an Apple Developer account,
+            I am no longer hosting this on the app store
+          </p>
+        </div>
+      </div>
 
-    <div class="desc">
-      <img src="images/snake.jpg" onmouseover="this.src='images/snake.gif';" onmouseout="this.src='images/snake.jpg';"
-        alt="SnakeAI">
+      <div class="project">
+        <div class="desc">
+          <img src="images/critterworld.png" onmouseover="this.src='images/critterworld.gif';"
+            onmouseout="this.src='images/critterworld.png';">
 
-      <h2>Snake AI Gamebot </h2>
-      <p>As the final project for my end-of-year physics class, I decided to
-        play around with using AI to play games. The first game I did was
-        SNAKE, where the training data was based on my own playing. The data
-        contained information such as its direction, the distance to the wall,
-        and the vector from the head to the red dot. I then trained the model
-        against this data.
-      </p>
+          <h2>Critter World</h2>
+          <i>Grammar Parsing and Simulation</i>
+          <p>
+            A graphical simulation consisting of multiple critters, each storing a
+            unique program written in a custom language with a context-free grammar, “critter-lang.”
+            Wrote a grammar parser and interpreter for critter-lang.
+          </p>
+          <p> Critter language is stored in an abstract syntax tree, which can mutate
+            when critters mate or bud new critters.
+            The critters have their unique behavior, in this demo, these critters
+            search for food, competing to try to eat as much as they can.
+          </p>
+        </div>
+      </div>
+
     </div>
-  </div>
-
-  <div class="showcase">
-
-    <div class="desc">
-      <img src="images/pathfinder.png" alt="TSP" onmouseover="this.src='images/pathfinder.gif';"
-        onmouseout="this.src='images/pathfinder.png';">
-
-      <h2>Traveling Salesman Problem</h2>
-      <p>
-        As one of my high school projects, I decided to look into the traveling
-        salesman problem. Written in Java and using Swing, I made a program to help
-        visualize the path finding. The user places specific points on the GUI,
-        and then chooses the algorithm to find the shortest cycle to the starting
-        position.
-      </p>
-      <p> The algorithms feature brute force, a greedy algorithm, a greedy algorithm
-        with swapping, and an ant-colony heuristic, in which
-        several "ants" travel along the paths and leave "pheremones". The paths
-        with the most pheremones tends to suggest the quickest path.
-      </p>
-    </div>
-  </div>
-
-
-  <div class="showcase">
-
-    <div class="desc">
-      <img src="images/thomson.png" onmouseover="this.src='images/thomson.gif';"
-        onmouseout="this.src='images/thomson.png';">
-
-      <h2>Thomson Problem</h2>
-      <p>
-        I built this project in around 2-3 hours as a test of my C++ "skills."
-        This is a simulation of electrons existing on a "sphere" world. This problem
-        minimizes the forces/energy between every electron pair. I also built
-        a postprocessor to visualize the electrons.
-      </p>
-      <p>
-        Currently, I am using a naive algorithm to find the lowest energy state, but
-        the code can easily be expanded to use different optimization algorithms
-        that take advantage of velocity and momentum.
-      </p>
-    </div>
-  </div>
-
-  <div class="showcase">
-
-    <div class="desc">
-      <img src="images/critterworld.png" onmouseover="this.src='images/critterworld.gif';"
-        onmouseout="this.src='images/critterworld.png';">
-
-      <h2>Critter World</h2>
-      <p>
-        A graphical simulation consisting of multiple critters, each storing a
-        unique program written in a custom language with a context-free grammar, “critter-lang.”
-        Wrote a grammar parser and interpreter for critter-lang.
-      </p>
-      <p> Critter language is stored in an abstract syntax tree, which can mutate
-        when critters mate or bud new critters.
-        The critters have their unique behavior, in this demo, these critters
-        search for food, competing to try to eat as much as they can.
-      </p>
-    </div>
-  </div>
 
 
 </body>
