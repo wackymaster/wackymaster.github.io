@@ -63,8 +63,9 @@ body {
   transition: 0.3s;
   border-radius: 15px;
   text-align:center;
-  height: 650px;
+  height: 550px;
   overflow: hidden;
+  background-color:rgba(0,0,0,0.2);
 }
 
 .project p {
@@ -74,7 +75,7 @@ body {
 }
 
 .project:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  box-shadow: 0 16px 16px 0 rgba(0,0,0,0.5);
 }
 
 .project img{

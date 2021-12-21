@@ -1,6 +1,6 @@
 let GRAVITATIONAL_CONSTANT = 6.67 * Math.pow(10, -11);
 let NUM_PARTICLES = 30;
-let TIME_STEP = .0025;
+let TIME_STEP = .0035;
 let TARGET_FPS = 120;
 let MAX_VELOCITY = 500;
 // let PARTICLE_SIZE = 5;
