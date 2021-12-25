@@ -4,7 +4,7 @@
   font-family: "Open Sans";
 }
 
-body {
+html, body {
   background: linear-gradient(
     135deg,
     rgb(34, 39, 68) 0%,
@@ -12,11 +12,13 @@ body {
   );
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  width: 95%;
+  width: 100%;
   display: table-cell;
   vertical-align: middle;
+  max-width: 100%;
   overflow-x: hidden;
 }
+
 
 .intro{
   width: 100%;
