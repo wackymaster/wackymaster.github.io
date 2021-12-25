@@ -50,6 +50,7 @@ body {
 
 .column {
   flex: 30%;
+  min-width: 325px;
 }
 
 .desc {
@@ -79,6 +80,8 @@ body {
 }
 
 .project img{
+  width: auto;
   height: 300px;
   max-width: 95%;
+  
 }
