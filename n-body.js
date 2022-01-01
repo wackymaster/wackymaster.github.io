@@ -1,11 +1,11 @@
 let GRAVITATIONAL_CONSTANT = 6.67 * Math.pow(10, -11);
 let NUM_PARTICLES = 30;
-let TIME_STEP = .0035;
+let TIME_STEP = 0.0035;
 let TARGET_FPS = 120;
 let MAX_VELOCITY = 500;
 // let PARTICLE_SIZE = 5;
 let PARTICLE_MAX_MASS = 3;
-let PARTICLE_MIN_MASS = .5;
+let PARTICLE_MIN_MASS = 0.5;
 let MOUSE_PARTICLE_MASS = 15;
 let MAX_NUMBER_PREV_POSITIONS = 30;
 let WRAP_AROUND = false;
@@ -17,7 +17,6 @@ canvas.width = SCREEN_X;
 canvas.height = SCREEN_Y;
 
 let PARTICLE_SIZE = 8 * (Math.min(SCREEN_X, SCREEN_Y) / 800);
-
 
 class Vector {
   constructor(x, y) {
@@ -55,7 +54,6 @@ class Particle {
       this.previousPos.shift();
     }
     this.previousPos.push(this.position);
-
   }
 }
 
@@ -63,9 +61,12 @@ class NBody {
   constructor(n) {
     this.particles = [];
     for (let i = 0; i < n; i++) {
-      let randomParticle = new Particle(PARTICLE_MIN_MASS + Math.random() *
-        (PARTICLE_MAX_MASS - PARTICLE_MIN_MASS),
-        Math.random() * SCREEN_X, Math.random() * SCREEN_Y);
+      let randomParticle = new Particle(
+        PARTICLE_MIN_MASS +
+          Math.random() * (PARTICLE_MAX_MASS - PARTICLE_MIN_MASS),
+        Math.random() * SCREEN_X,
+        Math.random() * SCREEN_Y
+      );
       this.particles.push(randomParticle);
     }
   }
@@ -79,8 +80,12 @@ class NBody {
         let rj = pj.position;
         // Calculate force between particles
         let radius = ri.subtractVectors(rj);
-        let force_magnitude = -1 * pi.mass * pj.mass * GRAVITATIONAL_CONSTANT
-          * Math.pow(radius.magnitude(), 3);
+        let force_magnitude =
+          -1 *
+          pi.mass *
+          pj.mass *
+          GRAVITATIONAL_CONSTANT *
+          Math.pow(radius.magnitude(), 3);
         let force = radius.multiplyScalar(force_magnitude);
         // Update
         pi.force = pi.force.addVectors(force);
@@ -120,7 +125,9 @@ class NBody {
       particle.addPosition();
       // Keep velocities under control
       if (particle.velocity.magnitude() > MAX_VELOCITY) {
-        particle.velocity = particle.velocity.multiplyScalar(MAX_VELOCITY / particle.velocity.magnitude())
+        particle.velocity = particle.velocity.multiplyScalar(
+          MAX_VELOCITY / particle.velocity.magnitude()
+        );
       }
     }
   }
@@ -130,16 +137,15 @@ class NBody {
    */
   step(timestep) {
     this.updateForces();
-    this.moveParticles(timestep)
+    this.moveParticles(timestep);
   }
 }
-
 
 class Drawer {
   constructor(n) {
     this.colors = [];
     for (let i = 0; i < n; i++) {
-      var randomColor = '#' + ((1 << 24) * Math.random() | 0).toString();
+      var randomColor = "#" + (((1 << 24) * Math.random()) | 0).toString();
       this.colors.push(randomColor);
     }
   }
@@ -152,9 +158,15 @@ class Drawer {
     context.beginPath();
     context.moveTo(fromx, fromy);
     context.lineTo(tox, toy);
-    context.lineTo(tox - arrowSize * Math.cos(angle - Math.PI / 6), toy - arrowSize * Math.sin(angle - Math.PI / 6));
+    context.lineTo(
+      tox - arrowSize * Math.cos(angle - Math.PI / 6),
+      toy - arrowSize * Math.sin(angle - Math.PI / 6)
+    );
     context.moveTo(tox, toy);
-    context.lineTo(tox - arrowSize * Math.cos(angle + Math.PI / 6), toy - arrowSize * Math.sin(angle + Math.PI / 6));
+    context.lineTo(
+      tox - arrowSize * Math.cos(angle + Math.PI / 6),
+      toy - arrowSize * Math.sin(angle + Math.PI / 6)
+    );
     context.stroke();
   }
 
@@ -185,7 +197,7 @@ class Drawer {
 
   drawParticles(particles) {
     if (canvas.getContext) {
-      var ctx = canvas.getContext('2d');
+      var ctx = canvas.getContext("2d");
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for (let i = 0; i < particles.length; i++) {
         // Set color and draw particle circle
@@ -195,7 +207,7 @@ class Drawer {
         let particle = particles[i];
         let x = particle.position.x;
         let y = particle.position.y;
-        let particleSize = 10 + Math.abs(particle.mass) * PARTICLE_SIZE
+        let particleSize = 10 + Math.abs(particle.mass) * PARTICLE_SIZE;
 
         // Particles who keep phasing in and out don't draw
         if (WRAP_AROUND) {
@@ -226,7 +238,6 @@ class Drawer {
   }
 }
 
-
 let simulation = new NBody(NUM_PARTICLES);
 let drawer = new Drawer(NUM_PARTICLES);
 // let mouseParticle = new Particle(MOUSE_PARTICLE_MASS, 0, 0);
@@ -239,7 +250,6 @@ let drawer = new Drawer(NUM_PARTICLES);
 var intervalId = window.setInterval(function () {
   simulation.step(TIME_STEP);
   drawer.drawParticles(simulation.particles);
-
 }, 1000 / TARGET_FPS);
 
 function resize() {
@@ -251,3 +261,8 @@ function resize() {
 }
 
 window.onresize = resize;
+
+
+
+
+
