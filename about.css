@@ -4,7 +4,7 @@
   font-family: "Open Sans";
 }
 
-.intro{
+.intro {
   width: 80%;
   max-width: 90rem;
   margin: 0 auto;
@@ -12,33 +12,31 @@
   text-align: center;
 }
 
-.intro h1{
-  color:rgb(255, 255, 255);
+.intro h1 {
+  color: rgb(255, 255, 255);
   text-align: left;
   font-size: 60px;
-  font-family: 'Open Sans', sans-serif;
-
+  font-family: "Open Sans", sans-serif;
 }
 
-.intro h2{
-  color:rgb(255, 255, 255);
+.intro h2 {
+  color: rgb(255, 255, 255);
   text-align: left;
   font-size: 30px;
   font-weight: 100;
 }
 
-.about p{
+.about p {
   font-size: 20px;
 }
 
 .topnav {
   overflow: hidden;
-  background-color:rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
 }
-
 
 .topnav a {
   float: right;
@@ -50,7 +48,7 @@
 }
 
 .logo {
-  float:left;
+  float: left;
   padding: -5px -5px;
 }
 
@@ -61,7 +59,7 @@
 }
 
 .topnav a.active {
-  background-color: #04AA6D;
+  background-color: #04aa6d;
   color: white;
 }
 
@@ -70,6 +68,6 @@
   width: auto;
   border-radius: 20%;
   margin: 2rem;
-  top:0;
+  top: 0;
   float: left;
 }

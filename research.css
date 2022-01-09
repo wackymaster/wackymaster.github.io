@@ -9,7 +9,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.intro{
+.intro {
   width: 70%;
   max-width: 70%;
   margin: 1rem auto;
@@ -17,21 +17,20 @@ body {
   text-align: center;
 }
 
-.intro h1{
-  color:rgb(42, 42, 42);
+.intro h1 {
+  color: rgb(42, 42, 42);
   text-align: left;
   font-size: min(50px, 10vw);
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 200;
 }
 
-.intro h2{
-  color:rgb(42, 42, 42);
+.intro h2 {
+  color: rgb(42, 42, 42);
   text-align: left;
   font-size: 20px;
   font-weight: 100;
 }
-
 
 .project-item {
   width: 70%;
@@ -41,7 +40,7 @@ body {
   justify-content: center;
 }
 
-.project-description img{
+.project-description img {
   flex: 1;
   max-width: 100%;
 }
@@ -53,7 +52,7 @@ body {
 .project-description h2 {
   font-size: 2rem;
   margin: 1rem 0;
-  color:rgb(42, 42, 42);
+  color: rgb(42, 42, 42);
 }
 
 .project-description p {
@@ -65,4 +64,3 @@ body {
   margin: 2rem 0;
   font-size: 1rem;
 }
-

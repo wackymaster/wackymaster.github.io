@@ -4,12 +4,9 @@
   font-family: "Open Sans";
 }
 
-html, body {
-  background: linear-gradient(
-    135deg,
-    rgb(34, 39, 68) 0%,
-    rgb(85, 85, 85) 100%
-  );
+html,
+body {
+  background: linear-gradient(135deg, rgb(34, 39, 68) 0%, rgb(85, 85, 85) 100%);
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   width: 100%;
@@ -19,8 +16,7 @@ html, body {
   overflow-x: hidden;
 }
 
-
-.intro{
+.intro {
   width: 100%;
   max-width: 90rem;
   margin: 0 auto;
@@ -30,17 +26,17 @@ html, body {
   text-align: center;
 }
 
-.intro h1{
-  color:rgb(255, 255, 255);
+.intro h1 {
+  color: rgb(255, 255, 255);
   text-align: left;
   font-size: 60px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 100;
   font-size: min(50px, 10vw);
 }
 
-.intro h2{
-  color:rgb(255, 255, 255);
+.intro h2 {
+  color: rgb(255, 255, 255);
   text-align: left;
   font-size: 20px;
   font-weight: 100;
@@ -57,18 +53,17 @@ html, body {
 
 .desc {
   z-index: 2;
-  color:rgb(255, 255, 255);
-  
+  color: rgb(255, 255, 255);
 }
 
 .project {
   padding-top: 20px;
   transition: 0.3s;
   border-radius: 15px;
-  text-align:center;
+  text-align: center;
   height: 550px;
   overflow: hidden;
-  background-color:rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .project p {
@@ -78,12 +73,11 @@ html, body {
 }
 
 .project:hover {
-  box-shadow: 0 16px 16px 0 rgba(0,0,0,0.5);
+  box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.5);
 }
 
-.project img{
+.project img {
   width: auto;
   height: 300px;
   max-width: 95%;
-  
 }
