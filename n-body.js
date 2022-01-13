@@ -1,11 +1,11 @@
 let GRAVITATIONAL_CONSTANT = 6.67 * Math.pow(10, -11);
 let NUM_PARTICLES = 75;
-let TIME_STEP = 0.0035;
+let TIME_STEP = 0.0015;
 let TARGET_FPS = 120;
 let MAX_VELOCITY = 500;
 // let PARTICLE_SIZE = 5;
 let PARTICLE_MAX_MASS = 1.5; // Maximum starting size
-let PARTICLE_MIN_MASS = 0.1; // Minimum starting size
+let PARTICLE_MIN_MASS = 0.5; // Minimum starting size
 let MOUSE_PARTICLE_MASS = 15;
 let MAX_NUMBER_PREV_POSITIONS = 30;
 let WRAP_AROUND = false;
@@ -16,7 +16,7 @@ let SCREEN_Y = canvas.clientHeight;
 canvas.width = SCREEN_X;
 canvas.height = SCREEN_Y;
 
-let PARTICLE_SIZE = 8 * (Math.min(SCREEN_X, SCREEN_Y) / 800);
+let PARTICLE_SIZE = 10 * (Math.min(SCREEN_X, SCREEN_Y) / 800);
 
 class Vector {
   constructor(x, y) {
@@ -28,6 +28,10 @@ class Vector {
   }
   addVectors(v) {
     return new Vector(this.x + v.x, this.y + v.y);
+  }
+  addVectorMut(v) {
+    this.x += v.x;
+	this.y += v.y;
   }
   subtractVectors(v) {
     return new Vector(this.x - v.x, this.y - v.y);
@@ -58,14 +62,14 @@ class Particle {
   }
 
   getSize() {
-    return 10 + Math.sqrt(Math.abs(this.mass)) * PARTICLE_SIZE;
+    return Math.sqrt(Math.abs(this.mass)) * PARTICLE_SIZE;
   }
 }
 
 class NBody {
   constructor(n) {
     this.particles = [];
-    this.camera = new Vector(SCREEN_X / 2, SCREEN_Y / 2);
+    this.camera = new Vector(0, 0);
     for (let i = 0; i < n; i++) {
       let randomParticle = new Particle(
         PARTICLE_MIN_MASS +
@@ -83,7 +87,7 @@ class NBody {
         let pi = this.particles[i];
         let pj = this.particles[j];
         let distance = pi.position.distance(pj.position);
-        let collide_distance = Math.abs(pi.getSize() - pj.getSize());
+        let collide_distance = 1.5 * Math.abs(pi.getSize() - pj.getSize());
         if (distance < collide_distance) {
           let larger_particle = pi.mass > pj.mass ? pi : pj;
           let smaller_particle = larger_particle != pi ? pi : pj;
@@ -124,17 +128,22 @@ class NBody {
   }
 
   setCamera(frame) {
-    if (frame % 50 != 0) {
-      return;
-    }
+    //if ((frame % TARGET_FPS) * 5 != 0) {
+    //return;
+    //}
     var totalMass = 0;
     var netPos = new Vector(0, 0);
     for (let i = 0; i < this.particles.length; i++) {
-      totalMass += this.particles[i].mass;
-      netPos = netPos.addVectors(this.particles[i].position);
+	  let particle = this.particles[i];
+      totalMass += particle.mass;
+      netPos.addVectorMut(particle.position.multiplyScalar(particle.mass));
     }
     netPos = netPos.multiplyScalar(1 / totalMass);
-	this.camera = this.camera.addVectors(netPos.multiplyScalar(0.1));
+    // Find with respect to the center of the screen
+    netPos = netPos.subtractVectors(new Vector(SCREEN_X / 2, SCREEN_Y / 2));
+    // Update camera
+    let diff = netPos.subtractVectors(this.camera);
+	this.camera = this.camera.addVectors(diff.multiplyScalar(0.05));
   }
 
   moveParticles(timestep) {
@@ -207,12 +216,16 @@ class Drawer {
     context.stroke();
   }
 
-  drawPath(context, particle, particleSize, fillStyle) {
+  drawPath(context, particle, particleSize, fillStyle, camera) {
     for (let i = 0; i < particle.previousPos.length - 1; i++) {
-      let position = particle.previousPos[i];
-      let position2 = particle.previousPos[i + 1];
+      let position = particle.previousPos[i].subtractVectors(camera);
+      let position2 = particle.previousPos[i + 1].subtractVectors(camera);
       // Don't draw inside the particle itself
-      if (position.distance(particle.position) < particleSize) continue;
+      if (
+        position.distance(particle.position.subtractVectors(camera)) <
+        particleSize
+      )
+        continue;
       // Don't draw across the screen
       if (Math.abs(position.x - position2.x) > SCREEN_X / 3) continue;
       if (Math.abs(position.y - position2.y) > SCREEN_Y / 3) continue;
@@ -224,10 +237,6 @@ class Drawer {
       context.lineTo(position2.x, position2.y);
       context.stroke();
       context.fill();
-      // context.beginPath();
-      // context.arc(x, y, 1.5, 0, 2 * Math.PI, true);
-      // context.stroke();
-      // context.fill();
     }
   }
 
@@ -238,8 +247,8 @@ class Drawer {
       for (let i = 0; i < particles.length; i++) {
         // Particle attributes
         let particle = particles[i];
-        let x = particle.position.x;
-        let y = particle.position.y;
+        let x = particle.position.x - camera.x;
+        let y = particle.position.y - camera.y;
         let particleSize = particle.getSize();
         // Set color and draw particle circle
         ctx.fillStyle = particle.color;
@@ -267,7 +276,7 @@ class Drawer {
         // this.drawArrow(ctx, x, y, endx, endy, 5, "black");
 
         // Draw trail
-        this.drawPath(ctx, particle, particleSize, particle.color);
+        this.drawPath(ctx, particle, particleSize, particle.color, camera);
       }
     }
   }
