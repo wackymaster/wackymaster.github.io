@@ -1,11 +1,11 @@
 let GRAVITATIONAL_CONSTANT = 6.67 * Math.pow(10, -11);
-let NUM_PARTICLES = 30;
+let NUM_PARTICLES = 75;
 let TIME_STEP = 0.0035;
 let TARGET_FPS = 120;
 let MAX_VELOCITY = 500;
 // let PARTICLE_SIZE = 5;
-let PARTICLE_MAX_MASS = 3;
-let PARTICLE_MIN_MASS = 0.5;
+let PARTICLE_MAX_MASS = 1.5; // Maximum starting size
+let PARTICLE_MIN_MASS = 0.1; // Minimum starting size
 let MOUSE_PARTICLE_MASS = 15;
 let MAX_NUMBER_PREV_POSITIONS = 30;
 let WRAP_AROUND = false;
@@ -33,7 +33,7 @@ class Vector {
     return new Vector(this.x - v.x, this.y - v.y);
   }
   magnitude() {
-    return Math.sqrt(Math.pow(this.x, 2), Math.pow(this.y, 2));
+    return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
   }
   distance(v) {
     return this.subtractVectors(v).magnitude();
@@ -47,6 +47,7 @@ class Particle {
     this.velocity = new Vector(0, 0);
     this.force = new Vector(0, 0);
     this.previousPos = [];
+    this.color = "#" + (((1 << 24) * Math.random()) | 0).toString();
   }
 
   addPosition() {
@@ -55,11 +56,16 @@ class Particle {
     }
     this.previousPos.push(this.position);
   }
+
+  getSize() {
+    return 10 + Math.sqrt(Math.abs(this.mass)) * PARTICLE_SIZE;
+  }
 }
 
 class NBody {
   constructor(n) {
     this.particles = [];
+    this.camera = new Vector(SCREEN_X / 2, SCREEN_Y / 2);
     for (let i = 0; i < n; i++) {
       let randomParticle = new Particle(
         PARTICLE_MIN_MASS +
@@ -68,6 +74,29 @@ class NBody {
         Math.random() * SCREEN_Y
       );
       this.particles.push(randomParticle);
+    }
+  }
+
+  handleCollisions() {
+    for (let i = 0; i < this.particles.length; i++) {
+      for (let j = i + 1; j < this.particles.length; j++) {
+        let pi = this.particles[i];
+        let pj = this.particles[j];
+        let distance = pi.position.distance(pj.position);
+        let collide_distance = Math.abs(pi.getSize() - pj.getSize());
+        if (distance < collide_distance) {
+          let larger_particle = pi.mass > pj.mass ? pi : pj;
+          let smaller_particle = larger_particle != pi ? pi : pj;
+          // Remove smaller particle
+          this.particles.splice(this.particles.indexOf(smaller_particle), 1);
+          // Update larger particle
+          larger_particle.velocity = pi.velocity
+            .multiplyScalar(pi.mass)
+            .addVectors(pj.velocity.multiplyScalar(pj.mass))
+            .multiplyScalar(1 / (pi.mass + pj.mass));
+          larger_particle.mass += smaller_particle.mass;
+        }
+      }
     }
   }
 
@@ -94,13 +123,27 @@ class NBody {
     }
   }
 
+  setCamera(frame) {
+    if (frame % 50 != 0) {
+      return;
+    }
+    var totalMass = 0;
+    var netPos = new Vector(0, 0);
+    for (let i = 0; i < this.particles.length; i++) {
+      totalMass += this.particles[i].mass;
+      netPos = netPos.addVectors(this.particles[i].position);
+    }
+    netPos = netPos.multiplyScalar(1 / totalMass);
+	this.camera = this.camera.addVectors(netPos.multiplyScalar(0.1));
+  }
+
   moveParticles(timestep) {
     // Don't move mouse particle, so only go to num particles
-    for (let i = 0; i < NUM_PARTICLES; i++) {
+    for (let i = 0; i < this.particles.length; i++) {
       let particle = this.particles[i];
       // Get force and update velocity and position
       let force = particle.force;
-      let acceleration = force.multiplyScalar(particle.mass);
+      let acceleration = force.multiplyScalar(1 / particle.mass);
       let deltaV = acceleration.multiplyScalar(timestep / 2);
       particle.velocity = particle.velocity.addVectors(deltaV);
       let deltaP = particle.velocity.multiplyScalar(timestep);
@@ -135,21 +178,15 @@ class NBody {
   /**
    * Updates each particle's velocity and position based on its current force
    */
-  step(timestep) {
+  step(timestep, frame) {
     this.updateForces();
     this.moveParticles(timestep);
+    this.handleCollisions();
+    this.setCamera(frame);
   }
 }
 
 class Drawer {
-  constructor(n) {
-    this.colors = [];
-    for (let i = 0; i < n; i++) {
-      var randomColor = "#" + (((1 << 24) * Math.random()) | 0).toString();
-      this.colors.push(randomColor);
-    }
-  }
-
   drawArrow(context, fromx, fromy, tox, toy, arrowSize, style) {
     var dx = tox - fromx;
     var dy = toy - fromy;
@@ -177,7 +214,6 @@ class Drawer {
       // Don't draw inside the particle itself
       if (position.distance(particle.position) < particleSize) continue;
       // Don't draw across the screen
-      let distanceDrawn = position.distance(position2);
       if (Math.abs(position.x - position2.x) > SCREEN_X / 3) continue;
       if (Math.abs(position.y - position2.y) > SCREEN_Y / 3) continue;
       context.globalAlpha = i / particle.previousPos.length;
@@ -195,20 +231,19 @@ class Drawer {
     }
   }
 
-  drawParticles(particles) {
+  drawParticles(particles, camera) {
     if (canvas.getContext) {
       var ctx = canvas.getContext("2d");
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for (let i = 0; i < particles.length; i++) {
-        // Set color and draw particle circle
-        ctx.fillStyle = this.colors[i];
-        ctx.strokeStyle = "black";
         // Particle attributes
         let particle = particles[i];
         let x = particle.position.x;
         let y = particle.position.y;
-        let particleSize = 10 + Math.abs(particle.mass) * PARTICLE_SIZE;
-
+        let particleSize = particle.getSize();
+        // Set color and draw particle circle
+        ctx.fillStyle = particle.color;
+        ctx.strokeStyle = "black";
         // Particles who keep phasing in and out don't draw
         if (WRAP_AROUND) {
           if (x < 5 || x > SCREEN_X - 5) continue;
@@ -232,7 +267,7 @@ class Drawer {
         // this.drawArrow(ctx, x, y, endx, endy, 5, "black");
 
         // Draw trail
-        this.drawPath(ctx, particle, particleSize, this.colors[i]);
+        this.drawPath(ctx, particle, particleSize, particle.color);
       }
     }
   }
@@ -247,9 +282,11 @@ let drawer = new Drawer(NUM_PARTICLES);
 // }
 // simulation.particles.push(mouseParticle);
 // document.addEventListener("mousemove", moveMouse);
+var frame = 0;
 var intervalId = window.setInterval(function () {
-  simulation.step(TIME_STEP);
-  drawer.drawParticles(simulation.particles);
+  simulation.step(TIME_STEP, frame);
+  drawer.drawParticles(simulation.particles, simulation.camera);
+  frame += 1;
 }, 1000 / TARGET_FPS);
 
 function resize() {
