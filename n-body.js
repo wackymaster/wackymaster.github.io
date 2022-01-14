@@ -1,5 +1,5 @@
 let GRAVITATIONAL_CONSTANT = 6.67 * Math.pow(10, -11);
-let NUM_PARTICLES = 75;
+let NUM_PARTICLES = 100;
 let TIME_STEP = 0.0015;
 let TARGET_FPS = 120;
 let MAX_VELOCITY = 2000;
@@ -13,10 +13,10 @@ let WRAP_AROUND = false;
 var canvas = document.getElementById("nBodyCanvas");
 let SCREEN_X = canvas.clientWidth;
 let SCREEN_Y = canvas.clientHeight;
-canvas.width = SCREEN_X;
-canvas.height = SCREEN_Y;
+canvas.width = canvas.clientWidth;
+canvas.height = canvas.clientHeight;
 // Multiplier for particle size (mass 1 gets this radius)
-let PARTICLE_SIZE = 10 * (Math.min(SCREEN_X, SCREEN_Y) / 800);
+let PARTICLE_SIZE = 7.5 * (Math.min(SCREEN_X, SCREEN_Y) / 800);
 
 class Vector {
   constructor(x, y) {
@@ -31,7 +31,7 @@ class Vector {
   }
   addVectorMut(v) {
     this.x += v.x;
-	this.y += v.y;
+    this.y += v.y;
   }
   subtractVectors(v) {
     return new Vector(this.x - v.x, this.y - v.y);
@@ -87,7 +87,7 @@ class NBody {
         let pi = this.particles[i];
         let pj = this.particles[j];
         let distance = pi.position.distance(pj.position);
-        let collide_distance = 1.5 * Math.abs(pi.getSize() - pj.getSize());
+        let collide_distance = 1.75 * Math.abs(pi.getSize() - pj.getSize());
         if (distance < collide_distance) {
           let larger_particle = pi.mass > pj.mass ? pi : pj;
           let smaller_particle = larger_particle != pi ? pi : pj;
@@ -134,7 +134,7 @@ class NBody {
     var totalMass = 0;
     var netPos = new Vector(0, 0);
     for (let i = 0; i < this.particles.length; i++) {
-	  let particle = this.particles[i];
+      let particle = this.particles[i];
       totalMass += particle.mass;
       netPos.addVectorMut(particle.position.multiplyScalar(particle.mass));
     }
@@ -143,7 +143,7 @@ class NBody {
     netPos = netPos.subtractVectors(new Vector(SCREEN_X / 2, SCREEN_Y / 2));
     // Update camera
     let diff = netPos.subtractVectors(this.camera);
-	this.camera = this.camera.addVectors(diff.multiplyScalar(0.05));
+    this.camera = this.camera.addVectors(diff.multiplyScalar(0.05));
   }
 
   moveParticles(timestep) {
