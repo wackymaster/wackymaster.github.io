@@ -2,7 +2,7 @@ let GRAVITATIONAL_CONSTANT = 6.67 * Math.pow(10, -11);
 let NUM_PARTICLES = 75;
 let TIME_STEP = 0.0015;
 let TARGET_FPS = 120;
-let MAX_VELOCITY = 500;
+let MAX_VELOCITY = 2000;
 // let PARTICLE_SIZE = 5;
 let PARTICLE_MAX_MASS = 1.5; // Maximum starting size
 let PARTICLE_MIN_MASS = 0.5; // Minimum starting size
@@ -15,7 +15,7 @@ let SCREEN_X = canvas.clientWidth;
 let SCREEN_Y = canvas.clientHeight;
 canvas.width = SCREEN_X;
 canvas.height = SCREEN_Y;
-
+// Multiplier for particle size (mass 1 gets this radius)
 let PARTICLE_SIZE = 10 * (Math.min(SCREEN_X, SCREEN_Y) / 800);
 
 class Vector {
@@ -93,7 +93,7 @@ class NBody {
           let smaller_particle = larger_particle != pi ? pi : pj;
           // Remove smaller particle
           this.particles.splice(this.particles.indexOf(smaller_particle), 1);
-          // Update larger particle
+          // Update larger particle based on inelastic collision
           larger_particle.velocity = pi.velocity
             .multiplyScalar(pi.mass)
             .addVectors(pj.velocity.multiplyScalar(pj.mass))
