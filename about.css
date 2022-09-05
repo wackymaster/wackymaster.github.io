@@ -64,10 +64,10 @@
 }
 
 .about-img img {
-  height: 10rem;
+  height: 5rem;
   width: auto;
-  border-radius: 20%;
-  margin: 2rem;
+  border-radius: 30%;
+  margin: 0rem;
   top: 0;
   float: left;
 }
