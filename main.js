@@ -32,4 +32,17 @@ function textSequence(num) {
   }, 1000 * duration);
 }
 
+//textSequence(0);
+function textSequence(num) {
+  setTimeout(function () {
+    i = getRandomInt(example.length);
+    while (i == num) {
+      i = getRandomInt(example.length);
+    }
+	$("#sequence").animate({ fontSize: ".5em" }, function () {
+	  document.getElementById("sequence").innerHTML = "William Wang"
+	  $("#sequence").animate({ fontSize: "3em" }, "slow");
+	});
+  }, 1000);
+}
 textSequence(0);
