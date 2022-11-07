@@ -100,15 +100,3 @@ img {
   display: inline;
   font-size: min(2.5vw, 30px);
 }
-
-
-.main-message #sequence {
-  width: 60%;
-  letter-spacing: min(0.4vw, 0.5rem);
-  font-weight: 200;
-  font-family: "Roboto Mono", monospace;
-  margin: auto;
-  color: white;
-  text-align: center;
-  font-size: min(4vw, 50px);
-}
