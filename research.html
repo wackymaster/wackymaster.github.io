@@ -112,8 +112,26 @@
     </div>
 
     <div class="project-item">
+      <div class="project-description has-margin-right">
+        <img src="images/mask.png" style="float: left" />
+        <h2>Panoptic Segmentation of Cartilage</h2>
+        <p>
+		An implementation of Mask R-CNN was trained on images/frames of impacted
+		cartilage. The initial weights were pre-trained on the COCO dataset to
+		support transfer learning, so only the head layers were trained.
+        </p>
+        <p>
+		Due to the noisiness of the dataset and limited training time, the 
+		model was not robust enough to perform segmentation to a high certainty.
+		However, the results suggest that much of noise and inaccuracies within 
+		the pre-labeled dataset were not as present within the model.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-item">
       <div class="project-description">
-        <img src="images/qtclock.png" style="float: left" />
+        <img src="images/qtclock.png" style="float: right" />
 
         <h2>Clinical Cardiovascular Research Center</h2>
         <p>
