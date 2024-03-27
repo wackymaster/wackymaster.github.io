@@ -64,20 +64,17 @@
 
     <div class="project-item">
       <div class="project-description">
-        <h2>Laboratory for Laser Energetics</h2>
+        <h2>PEPR Hohlraum</h2>
         <img src="images/paper.jpg" style="float: left" />
         <p>
-          I developed a 3D viewfactor code to simulate capsule uniformity during
-          indirect-drive implosions. The program was written in FORTRAN (and
-          using OpenMP for multiprocessing). I used the code to compare hohlraum
-          geometries as well as test the possibilities of new target chamber
-          designs.
+          High uniformity hohlraum designs are essential for achieving high yield in 
+          indirect-drive inertial confinement fusion experiments. However, only recently
+          has there been motivation toward spherical-based hohlraums.
         </p>
         <p>
-          I also developed a novel hohlraum design (PEPR) for the OMEGA 60-beam
-          laser. This design would provide great uniformity and promise insight
-          towards spherical hohlraum performance. I published my first,
-          first-author paper on the PEPR hohlraum (Journal: Physics of Plasmas)
+          The PEPR hohlraum is a novel geometry for the OMEGA 60-beam
+          laser. This hohlraum would provide excellent implosion uniformity and promise insight
+          towards spherical hohlraum performance. 
         </p>
         <a
           href="https://doi.org/10.1063/5.0050214"
@@ -85,44 +82,80 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          View Paper
+          View Paper (Physics of Plasmas)
         </a>
       </div>
     </div>
+    
 
     <div class="project-item">
       <div class="project-description has-margin-right">
-        <img src="images/cart1.gif" style="float: right" />
-        <h2>Itai Cohen Laboratory (Cornell University)</h2>
+        <img src="images/relaxation.gif" width="500" style="float: right" />
+        <h2>Phase Transitions of Fiber Networks</h2>
         <p>
-          Articular cartilage demonstrates unique mechanical properties, one
-          being its reponses to shear stress. The top layer of cartilage is up
+          Fiber networks are prevalent throughout nature, from cartilage to zebrafish embryos.
+          These biological tissues demonstrate unique mechanical properties, such as
+          its reponses to stress. For example, top layer of cartilage is up
           to 10-100 times more compliant than the deeper layers.
         </p>
         <p>
-          I created a Python code to model fiber networks as a lattice consisting
-          of nodes and bonds. The code stresses the network and then uses a
-		  (GPU-accelerated, sparsified, vectorized, pre-conditioned) iterative optimization algorithm
-		  to the find minimal energy state of the networks. The code is written in a modular-fashion and generalized
+          I wrote simulations to model the mechanical responses of these fiber networks. 
+          After applying a strain onto the network, highly-optimized 
+          (GPU-accelerated, sparsified, vectorized, pre-conditioned) numerical methods
+	  find minimal energy state of the networks. The code is written in a modular-fashion and generalized
           enough in that it can be applied to both 2-D and 3-D lattices.
         </p>
         <figcaption>
           *The animation shown only uses around 10^2 nodes, though the code can
-          easily handle beyond 10^6 nodes.
+          easily handle beyond 10^7 nodes on a single GPU.
         </figcaption>
       </div>
     </div>
+    
+      <div class="project-item">
+      <div class="project-description">
+        <h2>ICF Target Chamber Designs</h2>
+        <img src="images/proposed_design.png" style="float: left" />
+        <p>
+        An ignition-scale laser system capable of comparing both direct-drive and indirect-drive 
+        with high uniformity (on the same target chamber) does not yet exist. We propose a port
+        configuration that supports symmetric direct-drive implosions with minimal adjustments of the beam pointings
+        </p>
+        <p>
+          I developed a 3D viewfactor code to simulate capsule uniformity during
+          indirect-drive implosions. The program was written in FORTRAN (and
+          using OpenMP for multiprocessing). I used the code to compare hohlraum
+          geometries as well as test the possibilities of new target chamber
+          designs.
+        </p>
+        <a
+          href="https://ui.adsabs.harvard.edu/abs/2020APS..DPPG09001C/abstract"
+          class="project-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Presentation Abstract
+        </a>
+      </div>
+    </div>
+
 
     <div class="project-item">
       <div class="project-description has-margin-right">
-        <img src="images/mask.png" style="float: left" />
+        <img src="images/mask.png" style="float: right" />
         <h2>Panoptic Segmentation of Cartilage</h2>
         <p>
+        	Quantifying and drawing outlines of cells in fluorescence
+		microscopy images is especially important to studying cellular
+		responses and to biological sciences as a collective. However,
+		the process of manually segmenting cells is tedious and chal-
+		lenging, especially when tracking videos of cells. A video of
+		small sample of impacted articular cartilage can have as many
+		as 5000 cells across 1000+ time points.
+	</p>
 		An implementation of Mask R-CNN was trained on images/frames of impacted
 		cartilage. The initial weights were pre-trained on the COCO dataset to
 		support transfer learning, so only the head layers were trained.
-        </p>
-        <p>
 		Due to the noisiness of the dataset and limited training time, the 
 		model was not robust enough to perform segmentation to a high certainty.
 		However, the results suggest that much of noise and inaccuracies within 
@@ -133,7 +166,7 @@
 
     <div class="project-item">
       <div class="project-description">
-        <img src="images/qtclock.png" style="float: right" />
+        <img src="images/qtclock.png" style="float: left" />
 
         <h2>Clinical Cardiovascular Research Center</h2>
         <p>
@@ -146,7 +179,6 @@
           intake drug concentration in a clock-like graph. I also developed an
           online calculator that assesses the absolute risk of life-threatening
           cardiac events in patients with long QT syndrome.
-
         <a
           href="https://www.frontiersin.org/articles/10.3389/fcvm.2022.988951/full"
           class="project-link"
