@@ -9,4 +9,3 @@ category: previous
 language: Python
 color: blue
 ---
-

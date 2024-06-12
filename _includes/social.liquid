@@ -1,12 +1,18 @@
 {% if site.email %}
   <a target="_blank" rel="noopener noreferrer" href="mailto:{{ site.email | encode_email }}" title="email"><i class="fa-solid fa-envelope"></i></a>
 {% endif %}
-{% comment %} {% if site.scholar_userid %}
-  <a target="_blank" rel="noopener noreferrer" href="https://scholar.google.com/citations?user={{ site.scholar_userid }}" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
-{% endif %} {% endcomment %}
+{% comment %}
+  {% if site.scholar_userid %}
+    <a target="_blank" rel="noopener noreferrer" href="https://scholar.google.com/citations?user={{ site.scholar_userid }}" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+  {% endif %}
+{% endcomment %}
 {% if site.github_username %}
-  <a target="_blank" rel="noopener noreferrer" href="https://github.com/{{ site.github_username }}" title="GitHub"><i class="fa-brands fa-github"></i></a>
+  <a target="_blank" rel="noopener noreferrer" href="https://github.com/{{ site.github_username }}" title="GitHub"
+    ><i class="fa-brands fa-github"></i
+  ></a>
 {% endif %}
 {% if site.linkedin_username %}
-  <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/{{ site.linkedin_username }}" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+  <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/{{ site.linkedin_username }}" title="LinkedIn"
+    ><i class="fa-brands fa-linkedin"></i
+  ></a>
 {% endif %}

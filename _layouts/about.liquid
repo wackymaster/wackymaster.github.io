@@ -5,7 +5,10 @@ layout: default
   <header class="post-header">
     <h1 class="post-title">
       {% if site.title == 'blank' %}
-        <span class="font-weight-bold">{{ site.first_name }} {{ site.last_name }} </span>
+        <span class="font-weight-bold">
+          {{- site.first_name }}
+          {{ site.last_name }}
+        </span>
       {% else %}
         {{ site.title }}
       {% endif %}
@@ -27,21 +30,20 @@ layout: default
           {% endif %}
         </div>
       {% endif %}
-      
     </h1>
-    <p class="desc"> {{ page.subtitle }} </p>
-    <p> {% include social.liquid %} </p>
+    <p class="desc">{{ page.subtitle }}</p>
+    <p>{% include social.liquid %}</p>
   </header>
 
   <article>
-
     <div class="clearfix">{{ content }}</div>
 
     <!-- Education -->
     {% if page.education %}
-      <hr></hr>
-      <h2> Education </h2>
-      {% assign sorted_schools = site.education | sort: "importance" %}
+      <hr>
+      </hr>
+      <h2>Education</h2>
+      {% assign sorted_schools = site.education | sort: 'importance' %}
       <div class="education">
         {% for school in sorted_schools %}
           {% include education.liquid %}
@@ -51,9 +53,10 @@ layout: default
 
     <!-- Work Experience -->
     {% if page.work_experience %}
-      <hr></hr>
-      <h2> Work Experience </h2>
-      {% assign sorted_work = site.work | sort: "importance" %}
+      <hr>
+      </hr>
+      <h2>Work Experience</h2>
+      {% assign sorted_work = site.work | sort: 'importance' %}
       <div class="education">
         {% for work in sorted_work %}
           {% include work.liquid %}
@@ -63,7 +66,8 @@ layout: default
 
     <!-- Selected papers -->
     {% if page.selected_papers %}
-      <hr></hr>
+      <hr>
+      </hr>
       <h2>
         <a href="https://scholar.google.com/citations?user={{site.scholar_userid }}"> Selected Publications </a>
       </h2>
@@ -71,12 +75,13 @@ layout: default
     {% endif %}
 
     <!-- Written works -->
-    {% comment %} {% if page.written_works %}
-      <hr></hr>
-      <h2>
-        Other Works
-      </h2>
-    {% endif %} {% endcomment %}
-
+    {% comment %}
+      {% if page.written_works %}
+        <hr></hr>
+        <h2>
+          Other Works
+        </h2>
+      {% endif %}
+    {% endcomment %}
   </article>
 </div>

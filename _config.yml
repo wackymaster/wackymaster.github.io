@@ -4,7 +4,7 @@
 
 title: blank # the website title (if blank, full name will be used instead)
 first_name: William
-middle_name: 
+middle_name:
 last_name: Wang
 email: mail@williamywang.com
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
@@ -41,7 +41,6 @@ max_width: 930px
 scholar_userid: 1DkT3zkAAAAJ
 linkedin_username: williamwang585
 github_username: willwng
-
 
 # -----------------------------------------------------------------------------
 # Collections

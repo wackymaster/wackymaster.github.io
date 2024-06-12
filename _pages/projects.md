@@ -14,7 +14,9 @@ horizontal: true
 <div class="projects">
 
 <!-- Display categorized projects -->
+
 {% for category in page.display_categories %}
+
   <h3 class="category">{{ category }}</h3>
   {% assign categorized_projects = site.projects | where: "category", category %}
 {% assign sorted_projects = categorized_projects | sort: "importance" %}

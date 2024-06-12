@@ -72,8 +72,7 @@ class NBody {
     this.camera = new Vector(0, 0);
     for (let i = 0; i < n; i++) {
       let randomParticle = new Particle(
-        PARTICLE_MIN_MASS +
-          Math.random() * (PARTICLE_MAX_MASS - PARTICLE_MIN_MASS),
+        PARTICLE_MIN_MASS + Math.random() * (PARTICLE_MAX_MASS - PARTICLE_MIN_MASS),
         Math.random() * SCREEN_X,
         Math.random() * SCREEN_Y
       );
@@ -113,12 +112,7 @@ class NBody {
         let rj = pj.position;
         // Calculate force between particles
         let radius = ri.subtractVectors(rj);
-        let force_magnitude =
-          -1 *
-          pi.mass *
-          pj.mass *
-          GRAVITATIONAL_CONSTANT *
-          Math.pow(radius.magnitude(), 3);
+        let force_magnitude = -1 * pi.mass * pj.mass * GRAVITATIONAL_CONSTANT * Math.pow(radius.magnitude(), 3);
         let force = radius.multiplyScalar(force_magnitude);
         // Update
         pi.force = pi.force.addVectors(force);
@@ -177,9 +171,7 @@ class NBody {
       particle.addPosition();
       // Keep velocities under control
       if (particle.velocity.magnitude() > MAX_VELOCITY) {
-        particle.velocity = particle.velocity.multiplyScalar(
-          MAX_VELOCITY / particle.velocity.magnitude()
-        );
+        particle.velocity = particle.velocity.multiplyScalar(MAX_VELOCITY / particle.velocity.magnitude());
       }
     }
   }
@@ -204,15 +196,9 @@ class Drawer {
     context.beginPath();
     context.moveTo(fromx, fromy);
     context.lineTo(tox, toy);
-    context.lineTo(
-      tox - arrowSize * Math.cos(angle - Math.PI / 6),
-      toy - arrowSize * Math.sin(angle - Math.PI / 6)
-    );
+    context.lineTo(tox - arrowSize * Math.cos(angle - Math.PI / 6), toy - arrowSize * Math.sin(angle - Math.PI / 6));
     context.moveTo(tox, toy);
-    context.lineTo(
-      tox - arrowSize * Math.cos(angle + Math.PI / 6),
-      toy - arrowSize * Math.sin(angle + Math.PI / 6)
-    );
+    context.lineTo(tox - arrowSize * Math.cos(angle + Math.PI / 6), toy - arrowSize * Math.sin(angle + Math.PI / 6));
     context.stroke();
   }
 
@@ -221,11 +207,7 @@ class Drawer {
       let position = particle.previousPos[i].subtractVectors(camera);
       let position2 = particle.previousPos[i + 1].subtractVectors(camera);
       // Don't draw inside the particle itself
-      if (
-        position.distance(particle.position.subtractVectors(camera)) <
-        particleSize
-      )
-        continue;
+      if (position.distance(particle.position.subtractVectors(camera)) < particleSize) continue;
       // Don't draw across the screen
       if (Math.abs(position.x - position2.x) > SCREEN_X / 3) continue;
       if (Math.abs(position.y - position2.y) > SCREEN_Y / 3) continue;

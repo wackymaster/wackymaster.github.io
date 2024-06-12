@@ -9,13 +9,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-hr{
-  width:70%;
-  margin-left:15% !important;
-  margin-right:15% !important;
+hr {
+  width: 70%;
+  margin-left: 15% !important;
+  margin-right: 15% !important;
   border: 1px solid black !important;
   border-radius: 1px;
-
 }
 
 .intro {
@@ -73,5 +72,3 @@ hr{
   margin: 2rem 0;
   font-size: 1rem;
 }
-
-

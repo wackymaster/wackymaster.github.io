@@ -9,4 +9,3 @@ category: previous
 language: C++
 color: red
 ---
-

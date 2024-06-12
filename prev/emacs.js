@@ -28,15 +28,7 @@ function draw_emacs() {
   const color_map = new Map();
   keywords = ["class", "public", "extends", "new", "return"];
   keyword_color = "#aa38f2";
-  types = [
-    "String",
-    "int",
-    "Integer",
-    "HashMap",
-    "URL",
-    "WilliamWang",
-    "Developer",
-  ];
+  types = ["String", "int", "Integer", "HashMap", "URL", "WilliamWang", "Developer"];
   type_color = "#7bac7b";
 
   for (var i = 0; i < keywords.length; i++) {
