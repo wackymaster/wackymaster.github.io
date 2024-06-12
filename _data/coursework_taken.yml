@@ -1,0 +1,38 @@
+- title: Computer Science
+  contents:
+    - title: CS 6670
+      description: Computer Vision
+    - title: CS 6120
+      description: Advanced Compilers
+    - title: CS 4789
+      description: Reinforcement Learning
+    - title: CS 4780
+      description: Machine Learning
+    - title: CS 4220
+      description: Numerical Analysis, Linear and Nonlinear Problems
+
+- title: Math
+  contents:
+    - title: MATH 6220
+      description: Applied Functional Analysis
+    - title: MATH 4710
+      description: Probability
+    - title: MATH 4310
+      description: Linear Algebra
+    - title: MATH 4130
+      description: Real Analysis
+    - title: MATH 3340
+      description: Abstract Algebra
+
+- title: Physics
+  contents:
+    - title: PHYS 4498/4499
+      description: Senior Thesis
+    - title: PHYS 4230
+      description: Statistical Thermodynamics
+    - title: PHYS 3327
+      description: Electricity and Magnetism
+    - title: PHYS 3318
+      description: Analytical Mechanics
+    - title: PHYS 3317
+      description: Applications of Quantum Mechanics

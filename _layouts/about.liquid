@@ -1,0 +1,82 @@
+---
+layout: default
+---
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      {% if site.title == 'blank' %}
+        <span class="font-weight-bold">{{ site.first_name }} {{ site.last_name }} </span>
+      {% else %}
+        {{ site.title }}
+      {% endif %}
+
+      {% if page.profile %}
+        <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
+          {% if page.profile.image %}
+            {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+            {% if page.profile.image_circular %}
+              {% assign profile_image_class = 'rounded-circle' %}
+            {% else %}
+              {% assign profile_image_class = 'img-fluid 
+        rounded' %}
+            {% endif %}
+            {%
+              include figure.liquid loading="eager" path=profile_image_path class=profile_image_class width="30%" height="30%" alt=page.profile.image
+              cache_bust=true
+            %}
+          {% endif %}
+        </div>
+      {% endif %}
+      
+    </h1>
+    <p class="desc"> {{ page.subtitle }} </p>
+    <p> {% include social.liquid %} </p>
+  </header>
+
+  <article>
+
+    <div class="clearfix">{{ content }}</div>
+
+    <!-- Education -->
+    {% if page.education %}
+      <hr></hr>
+      <h2> Education </h2>
+      {% assign sorted_schools = site.education | sort: "importance" %}
+      <div class="education">
+        {% for school in sorted_schools %}
+          {% include education.liquid %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <!-- Work Experience -->
+    {% if page.work_experience %}
+      <hr></hr>
+      <h2> Work Experience </h2>
+      {% assign sorted_work = site.work | sort: "importance" %}
+      <div class="education">
+        {% for work in sorted_work %}
+          {% include work.liquid %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <!-- Selected papers -->
+    {% if page.selected_papers %}
+      <hr></hr>
+      <h2>
+        <a href="https://scholar.google.com/citations?user={{site.scholar_userid }}"> Selected Publications </a>
+      </h2>
+      {% include selected_papers.liquid %}
+    {% endif %}
+
+    <!-- Written works -->
+    {% comment %} {% if page.written_works %}
+      <hr></hr>
+      <h2>
+        Other Works
+      </h2>
+    {% endif %} {% endcomment %}
+
+  </article>
+</div>

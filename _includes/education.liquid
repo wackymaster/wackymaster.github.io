@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col col-sm-2 abbr text-center">
+      {%
+        include figure.liquid
+        loading="eager"
+        path=school.img
+        width="65%"
+        class="preview rounded"
+        zoomable=false
+        alt=entry.preview
+      %}
+    {% comment %} {% include figure.liquid loading="eager" width="65%" path=school.img alt="school thumbnail" %} {% endcomment %}
+  </div>
+  <div class="col-sm-10">
+
+    <div class="title font-weight-bold">{{ school.title }}</div>
+    <div class="" style="font-size: 0.95rem; font-style: italic">{{ school.dates }}</div> 
+    <div class="" style="font-size: 0.95rem">{{ school.description }}</div>
+  </div>
+</div>
