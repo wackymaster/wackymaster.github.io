@@ -1,0 +1,231 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Projects - Wang</title>
+    <link rel="stylesheet" href="projects.css" />
+    <link rel="stylesheet" href="nav.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <nav class="navbar nav nav-masthead fixed-top navbar-expand-sm bg-dark navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html" style="float: left">
+          <img src="images/logo.png" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar" style="float: right">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="projects.html">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="research.html">Research</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Me</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="intro">
+      <h1 style="text-align: center">My Projects</h1>
+      <h2>
+        Here's a brief showcase of some of the projects I have worked on. Unfortunately, I have lost the code for some of my older programs (younger
+        me wasn't aware of version control). Aside, I hope you enjoy!
+      </h2>
+    </div>
+
+    <div class="row">
+      <!--Column 1-->
+      <div class="column">
+        <div class="project">
+          <div class="desc">
+            <a href="https://github.com/willwng/Snake-Tensorflow" target="_blank">
+              <img src="images/snake.jpg" onmouseover="this.src='images/snake.gif';" onmouseout="this.src='images/snake.jpg';" alt="SnakeAI" />
+            </a>
+
+            <h2>Snake AI Gamebot</h2>
+            <i>Machine Learning</i>
+            <p>
+              A side-project in high school, this bot uses Tensorflow to train a simple NN model with real player data. The data contains a minimal
+              amount of information such as the snake's direction, distance to the wall, and the vector from the head to the apple.
+            </p>
+          </div>
+        </div>
+        <br />
+        <div class="project">
+          <div class="desc">
+            <img src="images/ocaml.png" onmouseover="this.src='images/ocaml.gif';" onmouseout="this.src='images/ocaml.png';" alt="Clarkanoid" />
+
+            <h2>"The Clarkanoid"</h2>
+            <i>RPG Game</i>
+            <p>
+              Entirely made in OCaml (using functional and imperative features). Implements its own Entity-Component-System, custom pixel art, enemy
+              AI, soundtracks, animations, and storyline. Partners: Mark Caputo and Alex Drake
+            </p>
+          </div>
+        </div>
+        <br />
+        <div class="project">
+          <div class="desc">
+            <img src="images/thomson.png" onmouseover="this.src='images/thomson.gif';" onmouseout="this.src='images/thomson.png';" />
+
+            <h2>Thomson Problem</h2>
+            <i>Physics Simulation</i>
+            <p>
+              I built this project in around 2-3 hours as a test of my C++ "skills." This is a simulation of electrons existing on a "sphere" world.
+              This problem minimizes the forces/energy between every electron pair. The resulting shape forms interesting spiral patterns.
+            </p>
+          </div>
+        </div>
+        <br />
+        <div class="project">
+          <div class="desc">
+            <a href="https://github.com/willwng/TicTacToe" target="_blank">
+              <img src="images/tictactoe.jpg" />
+            </a>
+
+            <h2>Ultimate Tic-Tac-Toe</h2>
+            <i>Game AI</i>
+            <p>
+              Features a Monte-Carlo search tree which simulates 30,000+ entire games per second. I built this project in around 2-3 days to learn
+              Kotlin, though I have yet to beat the AI.
+            </p>
+          </div>
+        </div>
+        <br />
+      </div>
+      <!-- Second Column -->
+      <div class="column">
+        <div class="project">
+          <div class="desc">
+            <img src="images/Javalin.png" />
+            <h2>Javalin</h2>
+            <i>Compiler</i>
+            <p>
+              Written in Kotlin, an optimizing compiler targeting x86 for a procedural language, Xi. Won the "2022 Compiler Bakeoff" Partners: Omkar
+              Bhalerao, Vivian Ding, Felix Roz
+            </p>
+          </div>
+        </div>
+        <br />
+        <div class="project">
+          <div class="desc">
+            <img
+              src="images/pathfinder.png"
+              alt="TSP"
+              onmouseover="this.src='images/pathfinder.gif';"
+              onmouseout="this.src='images/pathfinder.png';"
+            />
+
+            <h2>Traveling Salesman Problem</h2>
+            <i>Algorithms</i>
+            <p>
+              Algorithms feature brute force, a greedy algorithm, a greedy algorithm with swapping, and an ant-colony heuristic, in which several
+              "ants" travel along the paths and leave "pheremones". The paths with the most pheremones tends to suggest the quickest path.
+            </p>
+          </div>
+        </div>
+        <br />
+        <div class="project">
+          <div class="desc">
+            <a href="https://github.com/willwng/Chess" target="_blank">
+              <img src="images/chess.png" alt="chess" onmouseover="this.src='images/chess.gif';" onmouseout="this.src='images/chess.png';" />
+            </a>
+
+            <h2>Chess</h2>
+            <i>Game AI</i>
+            <p>
+              Also in the 2-3 days I made an Ultimate Tic-Tac-Toe game, I built my own chess engine and GUI with simple opponent AI. The AI features a
+              minimax search (including alpha-beta pruning) and a simple evaluation function to assess ~20,000 positions per second.
+            </p>
+          </div>
+        </div>
+        <br />
+        <div class="project">
+          <div class="desc">
+            <img src="images/pcb.jpg" onmouseover="this.src='images/redox.gif';" onmouseout="this.src='images/redox.jpg';" />
+
+            <h2>Redox Wireless</h2>
+            <i>Keyboard</i>
+            <p>
+              Based on the <a href="https://github.com/mattdibi/redox-keyboard"> Redox Wireless </a>. This is the custom mechanical keyboard I built
+              (hand-soldered pcbs and 3D printed cases). Wireless, orthilinear, hot-swap.
+            </p>
+          </div>
+        </div>
+        <br />
+      </div>
+      <!-- Third Column-->
+      <div class="column">
+        <div class="project">
+          <div class="desc">
+            <a href="https://github.com/willwng/Steer" target="_blank">
+              <img src="images/steer.jpg" alt="Steer" />
+            </a>
+            <h2>Steer Calendar</h2>
+            <i>iOS App (Swift)</i>
+            <p>
+              Built during the spring break in 10th grade. A student registers their classes using Google Firebase, which are then saved using SQLite.
+              The app fetches information from the calendars of the saved classes, parses the iCal data, and then displays assignments and other
+              course content on students’ devices.
+            </p>
+          </div>
+        </div>
+        <br />
+        <div class="project">
+          <div class="desc">
+            <img src="images/critterworld.png" onmouseover="this.src='images/critterworld.gif';" onmouseout="this.src='images/critterworld.png';" />
+
+            <h2>Critter World</h2>
+            <i>Grammar Parsing and Simulation</i>
+            <p>
+              A graphical simulation consisting of multiple critters, each using an abstract syntax tree to store a parsed program written in a custom
+              language, “critter-lang.” ASTs are interpreted and simulated each time-step.
+            </p>
+          </div>
+        </div>
+        <br />
+        <div class="project">
+          <div class="desc">
+            <img src="images/navier.png" onmouseover="this.src='images/navier.gif';" onmouseout="this.src='images/navier.png';" />
+
+            <h2>Navier-Stokes</h2>
+            <i>Physics Simulation</i>
+            <p>
+              A real-time implementation of the Navier-Stokes equation, based on the 2003 paper:
+              <a href="http://graphics.cs.cmu.edu/nsp/course/15-464/Fall09/papers/StamFluidforGames.pdf"> Real-Time Fluid Dynamics for Games </a>.
+              This model accurately predicted the aerodynamics of air-foil designs.
+            </p>
+          </div>
+        </div>
+        <br />
+        <div class="project">
+          <div class="desc">
+            <a href="https://github.com/willwng/WackyMXter" target="_blank">
+              <img src="images/kicad.png" />
+            </a>
+
+            <h2>WackyMXter</h2>
+            <i>Keyboard</i>
+            <p>My most ambitious build so far, I am designing a PCB for a split keyboard with an RP2040 microcontroller. Stay tuned!</p>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+  </body>
+</html>
